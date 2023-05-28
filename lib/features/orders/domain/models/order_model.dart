@@ -1,0 +1,27 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'customer.dart';
+import 'employee.dart';
+import 'order_detail.dart';
+import 'shipper.dart';
+
+part 'order_model.freezed.dart';
+part 'order_model.g.dart';
+
+@freezed
+class OrderModel with _$OrderModel {
+  factory OrderModel({
+    int? orderid,
+    String? orderdate,
+    int? shipperid,
+    Customer? customer,
+    Employee? employee,
+    int? employeeid,
+    int? customerid,
+    Shipper? shipper,
+    @JsonKey(name: 'order_details') List<OrderDetail>? orderDetails,
+  }) = _OrderModel;
+
+  factory OrderModel.fromJson(Map<String, dynamic> json) =>
+      _$OrderModelFromJson(json);
+}
