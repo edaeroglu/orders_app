@@ -18,7 +18,7 @@ class CustomerModel with _$CustomerModel {
   //freezed toString method
   @override
   String toString() {
-    return customername ?? "";
+    return customername.toString();
   }
 
   int get id => customerid ?? 0;

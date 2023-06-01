@@ -107,8 +107,8 @@ class __$$_ShipperModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShipperModel implements _ShipperModel {
-  _$_ShipperModel({this.shipperid, this.shippername});
+class _$_ShipperModel extends _ShipperModel {
+  _$_ShipperModel({this.shipperid, this.shippername}) : super._();
 
   factory _$_ShipperModel.fromJson(Map<String, dynamic> json) =>
       _$$_ShipperModelFromJson(json);
@@ -117,11 +117,6 @@ class _$_ShipperModel implements _ShipperModel {
   final int? shipperid;
   @override
   final String? shippername;
-
-  @override
-  String toString() {
-    return 'ShipperModel(shipperid: $shipperid, shippername: $shippername)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -152,9 +147,10 @@ class _$_ShipperModel implements _ShipperModel {
   }
 }
 
-abstract class _ShipperModel implements ShipperModel {
+abstract class _ShipperModel extends ShipperModel {
   factory _ShipperModel({final int? shipperid, final String? shippername}) =
       _$_ShipperModel;
+  _ShipperModel._() : super._();
 
   factory _ShipperModel.fromJson(Map<String, dynamic> json) =
       _$_ShipperModel.fromJson;

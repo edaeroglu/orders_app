@@ -11,10 +11,18 @@ class OrderWrapperView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AutoTabsRouter.tabBar(
-      routes: const [OrderRoute(), UpdateRoute()],
+      routes: const [OrderRoute(), CustomerRoute()],
       builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              context.pushRoute(const UpdateRoute());
+            },
+            child: const Icon(Icons.add),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             items: const [

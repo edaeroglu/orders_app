@@ -38,4 +38,16 @@ class OrderRepositoryImpl implements OrderRepository {
 
     return response['insert_orders_one']['id'] != null;
   }
+
+  @override
+  Future<OrderModel> deleteOrder({
+    required int orderId,
+  }) async {
+    var response =
+        await graphQLService.mutate(Mutations.deleteOrder, variables: {
+      "orderid": orderId,
+    });
+
+    return OrderModel.fromJson(response['delete_orders']);
+  }
 }

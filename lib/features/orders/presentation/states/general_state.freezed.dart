@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'customer_state.dart';
+part of 'general_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CustomerState {
+mixin _$GeneralState {
   List<CustomerModel> get customers => throw _privateConstructorUsedError;
   List<ShipperModel> get shippers => throw _privateConstructorUsedError;
   List<EmployeeModel> get employees => throw _privateConstructorUsedError;
@@ -23,17 +23,19 @@ mixin _$CustomerState {
   CustomerModel? get selectedCustomer => throw _privateConstructorUsedError;
   ShipperModel? get selectedShipper => throw _privateConstructorUsedError;
   EmployeeModel? get selectedEmployee => throw _privateConstructorUsedError;
+  OrderModel? get selectedOrder => throw _privateConstructorUsedError;
+  ProductModel? get selectProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CustomerStateCopyWith<CustomerState> get copyWith =>
+  $GeneralStateCopyWith<GeneralState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CustomerStateCopyWith<$Res> {
-  factory $CustomerStateCopyWith(
-          CustomerState value, $Res Function(CustomerState) then) =
-      _$CustomerStateCopyWithImpl<$Res, CustomerState>;
+abstract class $GeneralStateCopyWith<$Res> {
+  factory $GeneralStateCopyWith(
+          GeneralState value, $Res Function(GeneralState) then) =
+      _$GeneralStateCopyWithImpl<$Res, GeneralState>;
   @useResult
   $Res call(
       {List<CustomerModel> customers,
@@ -42,17 +44,21 @@ abstract class $CustomerStateCopyWith<$Res> {
       List<ProductModel> products,
       CustomerModel? selectedCustomer,
       ShipperModel? selectedShipper,
-      EmployeeModel? selectedEmployee});
+      EmployeeModel? selectedEmployee,
+      OrderModel? selectedOrder,
+      ProductModel? selectProduct});
 
   $CustomerModelCopyWith<$Res>? get selectedCustomer;
   $ShipperModelCopyWith<$Res>? get selectedShipper;
   $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $OrderModelCopyWith<$Res>? get selectedOrder;
+  $ProductModelCopyWith<$Res>? get selectProduct;
 }
 
 /// @nodoc
-class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
-    implements $CustomerStateCopyWith<$Res> {
-  _$CustomerStateCopyWithImpl(this._value, this._then);
+class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
+    implements $GeneralStateCopyWith<$Res> {
+  _$GeneralStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,6 +75,8 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
     Object? selectedCustomer = freezed,
     Object? selectedShipper = freezed,
     Object? selectedEmployee = freezed,
+    Object? selectedOrder = freezed,
+    Object? selectProduct = freezed,
   }) {
     return _then(_value.copyWith(
       customers: null == customers
@@ -99,6 +107,14 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
               as EmployeeModel?,
+      selectedOrder: freezed == selectedOrder
+          ? _value.selectedOrder
+          : selectedOrder // ignore: cast_nullable_to_non_nullable
+              as OrderModel?,
+      selectProduct: freezed == selectProduct
+          ? _value.selectProduct
+          : selectProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
     ) as $Val);
   }
 
@@ -137,14 +153,38 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
       return _then(_value.copyWith(selectedEmployee: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderModelCopyWith<$Res>? get selectedOrder {
+    if (_value.selectedOrder == null) {
+      return null;
+    }
+
+    return $OrderModelCopyWith<$Res>(_value.selectedOrder!, (value) {
+      return _then(_value.copyWith(selectedOrder: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductModelCopyWith<$Res>? get selectProduct {
+    if (_value.selectProduct == null) {
+      return null;
+    }
+
+    return $ProductModelCopyWith<$Res>(_value.selectProduct!, (value) {
+      return _then(_value.copyWith(selectProduct: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_CustomerStateCopyWith<$Res>
-    implements $CustomerStateCopyWith<$Res> {
-  factory _$$_CustomerStateCopyWith(
-          _$_CustomerState value, $Res Function(_$_CustomerState) then) =
-      __$$_CustomerStateCopyWithImpl<$Res>;
+abstract class _$$_GeneralStateCopyWith<$Res>
+    implements $GeneralStateCopyWith<$Res> {
+  factory _$$_GeneralStateCopyWith(
+          _$_GeneralState value, $Res Function(_$_GeneralState) then) =
+      __$$_GeneralStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,7 +194,9 @@ abstract class _$$_CustomerStateCopyWith<$Res>
       List<ProductModel> products,
       CustomerModel? selectedCustomer,
       ShipperModel? selectedShipper,
-      EmployeeModel? selectedEmployee});
+      EmployeeModel? selectedEmployee,
+      OrderModel? selectedOrder,
+      ProductModel? selectProduct});
 
   @override
   $CustomerModelCopyWith<$Res>? get selectedCustomer;
@@ -162,14 +204,18 @@ abstract class _$$_CustomerStateCopyWith<$Res>
   $ShipperModelCopyWith<$Res>? get selectedShipper;
   @override
   $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  @override
+  $OrderModelCopyWith<$Res>? get selectedOrder;
+  @override
+  $ProductModelCopyWith<$Res>? get selectProduct;
 }
 
 /// @nodoc
-class __$$_CustomerStateCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_CustomerState>
-    implements _$$_CustomerStateCopyWith<$Res> {
-  __$$_CustomerStateCopyWithImpl(
-      _$_CustomerState _value, $Res Function(_$_CustomerState) _then)
+class __$$_GeneralStateCopyWithImpl<$Res>
+    extends _$GeneralStateCopyWithImpl<$Res, _$_GeneralState>
+    implements _$$_GeneralStateCopyWith<$Res> {
+  __$$_GeneralStateCopyWithImpl(
+      _$_GeneralState _value, $Res Function(_$_GeneralState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -182,8 +228,10 @@ class __$$_CustomerStateCopyWithImpl<$Res>
     Object? selectedCustomer = freezed,
     Object? selectedShipper = freezed,
     Object? selectedEmployee = freezed,
+    Object? selectedOrder = freezed,
+    Object? selectProduct = freezed,
   }) {
-    return _then(_$_CustomerState(
+    return _then(_$_GeneralState(
       customers: null == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -212,21 +260,31 @@ class __$$_CustomerStateCopyWithImpl<$Res>
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
               as EmployeeModel?,
+      selectedOrder: freezed == selectedOrder
+          ? _value.selectedOrder
+          : selectedOrder // ignore: cast_nullable_to_non_nullable
+              as OrderModel?,
+      selectProduct: freezed == selectProduct
+          ? _value.selectProduct
+          : selectProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_CustomerState implements _CustomerState {
-  _$_CustomerState(
+class _$_GeneralState implements _GeneralState {
+  _$_GeneralState(
       {required final List<CustomerModel> customers,
       required final List<ShipperModel> shippers,
       required final List<EmployeeModel> employees,
       required final List<ProductModel> products,
       required this.selectedCustomer,
       required this.selectedShipper,
-      required this.selectedEmployee})
+      required this.selectedEmployee,
+      required this.selectedOrder,
+      required this.selectProduct})
       : _customers = customers,
         _shippers = shippers,
         _employees = employees,
@@ -270,17 +328,21 @@ class _$_CustomerState implements _CustomerState {
   final ShipperModel? selectedShipper;
   @override
   final EmployeeModel? selectedEmployee;
+  @override
+  final OrderModel? selectedOrder;
+  @override
+  final ProductModel? selectProduct;
 
   @override
   String toString() {
-    return 'CustomerState(customers: $customers, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee)';
+    return 'GeneralState(customers: $customers, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedOrder: $selectedOrder, selectProduct: $selectProduct)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerState &&
+            other is _$_GeneralState &&
             const DeepCollectionEquality()
                 .equals(other._customers, _customers) &&
             const DeepCollectionEquality().equals(other._shippers, _shippers) &&
@@ -292,7 +354,11 @@ class _$_CustomerState implements _CustomerState {
             (identical(other.selectedShipper, selectedShipper) ||
                 other.selectedShipper == selectedShipper) &&
             (identical(other.selectedEmployee, selectedEmployee) ||
-                other.selectedEmployee == selectedEmployee));
+                other.selectedEmployee == selectedEmployee) &&
+            (identical(other.selectedOrder, selectedOrder) ||
+                other.selectedOrder == selectedOrder) &&
+            (identical(other.selectProduct, selectProduct) ||
+                other.selectProduct == selectProduct));
   }
 
   @override
@@ -304,24 +370,28 @@ class _$_CustomerState implements _CustomerState {
       const DeepCollectionEquality().hash(_products),
       selectedCustomer,
       selectedShipper,
-      selectedEmployee);
+      selectedEmployee,
+      selectedOrder,
+      selectProduct);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerStateCopyWith<_$_CustomerState> get copyWith =>
-      __$$_CustomerStateCopyWithImpl<_$_CustomerState>(this, _$identity);
+  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith =>
+      __$$_GeneralStateCopyWithImpl<_$_GeneralState>(this, _$identity);
 }
 
-abstract class _CustomerState implements CustomerState {
-  factory _CustomerState(
+abstract class _GeneralState implements GeneralState {
+  factory _GeneralState(
       {required final List<CustomerModel> customers,
       required final List<ShipperModel> shippers,
       required final List<EmployeeModel> employees,
       required final List<ProductModel> products,
       required final CustomerModel? selectedCustomer,
       required final ShipperModel? selectedShipper,
-      required final EmployeeModel? selectedEmployee}) = _$_CustomerState;
+      required final EmployeeModel? selectedEmployee,
+      required final OrderModel? selectedOrder,
+      required final ProductModel? selectProduct}) = _$_GeneralState;
 
   @override
   List<CustomerModel> get customers;
@@ -338,7 +408,11 @@ abstract class _CustomerState implements CustomerState {
   @override
   EmployeeModel? get selectedEmployee;
   @override
+  OrderModel? get selectedOrder;
+  @override
+  ProductModel? get selectProduct;
+  @override
   @JsonKey(ignore: true)
-  _$$_CustomerStateCopyWith<_$_CustomerState> get copyWith =>
+  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith =>
       throw _privateConstructorUsedError;
 }

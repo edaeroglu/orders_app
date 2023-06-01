@@ -250,7 +250,7 @@ class __$$_OrderModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderModel implements _OrderModel {
+class _$_OrderModel extends _OrderModel {
   _$_OrderModel(
       {this.orderid,
       this.orderdate,
@@ -261,7 +261,8 @@ class _$_OrderModel implements _OrderModel {
       this.customerid,
       this.shipper,
       @JsonKey(name: 'order_details') final List<OrderDetail>? orderDetails})
-      : _orderDetails = orderDetails;
+      : _orderDetails = orderDetails,
+        super._();
 
   factory _$_OrderModel.fromJson(Map<String, dynamic> json) =>
       _$$_OrderModelFromJson(json);
@@ -291,11 +292,6 @@ class _$_OrderModel implements _OrderModel {
     if (_orderDetails is EqualUnmodifiableListView) return _orderDetails;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'OrderModel(orderid: $orderid, orderdate: $orderdate, shipperid: $shipperid, customer: $customer, employee: $employee, employeeid: $employeeid, customerid: $customerid, shipper: $shipper, orderDetails: $orderDetails)';
   }
 
   @override
@@ -349,7 +345,7 @@ class _$_OrderModel implements _OrderModel {
   }
 }
 
-abstract class _OrderModel implements OrderModel {
+abstract class _OrderModel extends OrderModel {
   factory _OrderModel(
       {final int? orderid,
       final String? orderdate,
@@ -361,6 +357,7 @@ abstract class _OrderModel implements OrderModel {
       final Shipper? shipper,
       @JsonKey(name: 'order_details')
           final List<OrderDetail>? orderDetails}) = _$_OrderModel;
+  _OrderModel._() : super._();
 
   factory _OrderModel.fromJson(Map<String, dynamic> json) =
       _$_OrderModel.fromJson;

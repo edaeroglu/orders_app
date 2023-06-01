@@ -10,7 +10,12 @@ abstract class RegisterModule {
               "x-hasura-admin-secret":
                   "qUEMpQ7VV9nnNwVMX8IYN7DREJbOtvSCvUvE9WqN8qBwESFTpXZbp1pqwGduXFZe"
             }),
+        defaultPolicies: DefaultPolicies(
+          query: Policies(fetch: FetchPolicy.networkOnly),
+        ),
         // The default store is the InMemoryStore, which does NOT persist to disk
-        cache: GraphQLCache(store: HiveStore()),
+        cache: GraphQLCache(
+          store: HiveStore(),
+        ),
       );
 }

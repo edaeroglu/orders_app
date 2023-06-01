@@ -5,16 +5,29 @@ import '../../features/orders/domain/models/customer.dart';
 import '../../features/orders/domain/models/employee.dart';
 import '../../features/orders/domain/models/shipper.dart';
 
+class CrudButton extends StatelessWidget {
+  const CrudButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: onPressed, child: Text(text));
+  }
+}
+
 class CustomerDetailButton extends ConsumerWidget {
   const CustomerDetailButton({
     super.key,
     required this.customer,
-    required this.customerAddress,
   });
 
   final Customer? customer;
-
-  final String? customerAddress;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,10 +41,11 @@ class CustomerDetailButton extends ConsumerWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Name: ${customer?.customername ?? ''}'),
-                  Text('Country: ${customer?.country ?? ""}'),
-                  Text('City: ${customer?.city ?? ''}'),
-                  Text('Address: $customerAddress'),
+                  Text('Name: ${customer?.customername}'),
+                  Text('Country: ${customer?.country}'),
+                  Text('City: ${customer?.city}'),
+                  Text('Address: ${customer?.address}'),
+                  Text('Contact Name: ${customer?.contactname}')
                 ],
               ),
               actions: [
@@ -71,10 +85,10 @@ class EmployeeDetailsButton extends StatelessWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('First Name: ${employee?.firstname ?? ""}'),
-                  Text('Last Name: ${employee?.lastname ?? ""}'),
-                  Text('Notes: ${employee?.notes ?? ""}'),
-                  Text('Birth Date: ${employee?.birthdate ?? ""}'),
+                  Text('First Name: ${employee?.firstname}'),
+                  Text('Last Name: ${employee?.lastname}'),
+                  Text('Notes: ${employee?.notes}'),
+                  Text('Birth Date: ${employee?.birthdate}'),
                 ],
               ),
               actions: [
@@ -114,8 +128,8 @@ class ShipperDetailsButton extends StatelessWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Shipper Name: ${shipper?.shippername ?? ""}}'),
-                  Text('Shipper Phone: ${shipper?.phone ?? ""}}}')
+                  Text('Shipper Name: ${shipper?.shippername}'),
+                  Text('Shipper Phone: ${shipper?.phone}')
                 ],
               ),
               actions: [

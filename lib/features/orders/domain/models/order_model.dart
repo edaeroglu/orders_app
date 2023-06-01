@@ -8,8 +8,10 @@ import 'shipper.dart';
 part 'order_model.freezed.dart';
 part 'order_model.g.dart';
 
-@freezed
+@Freezed(toStringOverride: false)
 class OrderModel with _$OrderModel {
+  OrderModel._();
+
   factory OrderModel({
     int? orderid,
     String? orderdate,

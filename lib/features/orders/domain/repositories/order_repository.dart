@@ -9,4 +9,8 @@ abstract class OrderRepository {
     required int productId,
     required int quantity,
   });
+
+  Future<OrderModel> deleteOrder({
+    required int orderId,
+  });
 }

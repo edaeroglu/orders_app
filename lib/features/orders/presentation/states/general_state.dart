@@ -2,13 +2,14 @@ import 'package:deneme/features/orders/domain/models/employee_model/employee_mod
 import 'package:deneme/features/orders/domain/models/shipper_model/shipper_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../domain/models/customer_model/customer_model.dart';
+import '../../domain/models/order_model.dart';
 import '../../domain/models/product_model/product_model.dart';
 
-part 'customer_state.freezed.dart';
+part 'general_state.freezed.dart';
 
 @freezed
-class CustomerState with _$CustomerState {
-  factory CustomerState({
+class GeneralState with _$GeneralState {
+  factory GeneralState({
     required List<CustomerModel> customers,
     required List<ShipperModel> shippers,
     required List<EmployeeModel> employees,
@@ -16,14 +17,18 @@ class CustomerState with _$CustomerState {
     required CustomerModel? selectedCustomer,
     required ShipperModel? selectedShipper,
     required EmployeeModel? selectedEmployee,
-  }) = _CustomerState;
+    required OrderModel? selectedOrder,
+    required ProductModel? selectProduct,
+  }) = _GeneralState;
 
-  factory CustomerState.initial() => CustomerState(
+  factory GeneralState.initial() => GeneralState(
       customers: [],
-      selectedCustomer: null,
       shippers: [],
       employees: [],
       products: [],
+      selectedCustomer: null,
       selectedShipper: null,
-      selectedEmployee: null);
+      selectedEmployee: null,
+      selectedOrder: null,
+      selectProduct: null);
 }

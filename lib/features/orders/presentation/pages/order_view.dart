@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../product/components/details_button.dart';
+import '../../../../product/components/buttons.dart';
 
 @RoutePage()
 class OrderView extends ConsumerWidget {
@@ -21,7 +20,6 @@ class OrderView extends ConsumerWidget {
                     return GestureDetector(
                       onTap: () {
                         final customer = state.orders[index].customer;
-
                         // final customerName = clickedCustomer.customername;
                         showDialog(
                           context: context,
@@ -31,8 +29,8 @@ class OrderView extends ConsumerWidget {
                               content: Column(
                                 children: [
                                   CustomerDetailButton(
-                                      customer: state.orders[index].customer,
-                                      customerAddress: customer?.address),
+                                    customer: state.orders[index].customer,
+                                  ),
                                   EmployeeDetailsButton(
                                     employee: state.orders[index].employee,
                                   ),
@@ -55,14 +53,18 @@ class OrderView extends ConsumerWidget {
                       },
                       child: ListTile(
                         title: Text(state.orders[index].orderid.toString()),
-                        subtitle: Text(state.orders[index].orderdate ?? ""),
+                        subtitle: Text(
+                            state.orders[index].customer?.customername ?? ""),
                       ),
                     );
                   },
                 );
               },
               error: (error, stackTrace) => Text(error.toString()),
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.blue,
+              )),
             ),
       ),
     );
