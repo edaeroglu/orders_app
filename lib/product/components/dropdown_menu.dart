@@ -95,7 +95,7 @@ class CrudDropdownMenu extends ConsumerWidget {
               .toList(),
           onChanged: (value) {
             if (value == "Ekle") {
-              context.pushRoute(const UpdateRoute());
+              context.pushRoute(const AddRoute());
             } else if (value == "Sil") {
               context.pushRoute(const DeleteRoute());
             } else if (value == "Güncelle") {

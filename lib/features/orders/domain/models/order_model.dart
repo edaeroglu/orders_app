@@ -1,3 +1,4 @@
+import 'package:deneme/features/orders/domain/models/product_model/product_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'customer.dart';

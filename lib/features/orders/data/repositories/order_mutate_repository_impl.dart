@@ -16,6 +16,14 @@ class GeneralRepositoryImpl implements GeneralRepository {
   GeneralRepositoryImpl(this.graphQLService);
 
   @override
+  Future<List<OrderModel>> getOrders() async {
+    var response = await graphQLService.query(Queries.getOrders);
+    return response['orders']
+        .map<OrderModel>((e) => OrderModel.fromJson(e))
+        .toList();
+  }
+
+  @override
   Future<List<CustomerModel>> getCustomers() async {
     var response = await graphQLService.query(Queries.getCustomers);
     return response['customers']
@@ -24,31 +32,38 @@ class GeneralRepositoryImpl implements GeneralRepository {
   }
 
   @override
-  Future<OrderModel> insertCustomer({
+  Future<OrderModel> insertOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
+    required int productId,
   }) async {
     var response =
         await graphQLService.mutate(Mutations.insertOrder, variables: {
       "customerid": customerId,
       "employeeid": employeeId,
       "shipperid": shipperId,
-      // "productid": productId,
+      "productid": productId,
     });
     return OrderModel.fromJson(response['insert_orders_one']);
   }
 
   @override
-  Future<OrderModel> deleteCustomer({
-    required int orderId,
+  Future<OrderModel> updateOrder({
+    required int customerId,
+    required int employeeId,
+    required int shipperId,
+    required int productId,
   }) async {
     var response =
-        await graphQLService.mutate(Mutations.deleteOrder, variables: {
-      "orderid": orderId,
+        await graphQLService.mutate(Mutations.updateOrder, variables: {
+      "customerid": customerId,
+      "employeeid": employeeId,
+      "shipperid": shipperId,
+      "productid": productId,
     });
-    return response['delete_orders']['affected_rows'];
+
+    return OrderModel.fromJson(response['update_orders']);
   }
 
   @override
@@ -60,24 +75,11 @@ class GeneralRepositoryImpl implements GeneralRepository {
   }
 
   @override
-  Future<int> insertEmployee({required int employeeId}) {
-    // TODO: implement insertEmployee
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<ProductModel>> getProducts() async {
     var response = await graphQLService.query(Queries.getProducts);
     return response['products']
         .map<ProductModel>((e) => ProductModel.fromJson(e))
         .toList();
-  }
-
-  @override
-  Future<bool> insertProduct(
-      {required String productName, required String productId}) {
-    // TODO: implement insertProduct
-    throw UnimplementedError();
   }
 
   @override
@@ -87,15 +89,7 @@ class GeneralRepositoryImpl implements GeneralRepository {
         .map<ShipperModel>((e) => ShipperModel.fromJson(e))
         .toList();
   }
-
-  @override
-  Future<bool> insertShipper(
-      {required String shipperName, required String shipperId}) {
-    // TODO: implement insertShipper
-    throw UnimplementedError();
-  }
 }
-
 
 
 

@@ -5,30 +5,24 @@ import '../models/customer_model/customer_model.dart';
 import '../models/order_model.dart';
 
 abstract class GeneralRepository {
+  Future<List<OrderModel>> getOrders();
   Future<List<CustomerModel>> getCustomers();
   Future<List<EmployeeModel>> getEmployees();
   Future<List<ProductModel>> getProducts();
   Future<List<ShipperModel>> getShippers();
 
-  Future<OrderModel> insertCustomer({
+  Future<OrderModel> insertOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
+    required int productId,
   });
 
-  Future<OrderModel> deleteCustomer({
-    required int orderId,
-  });
-
-  Future<bool> insertProduct(
-      {required String productName, required String productId});
-
-  Future<bool> insertShipper(
-      {required String shipperName, required String shipperId});
-
-  Future<int> insertEmployee({
+  Future<OrderModel> updateOrder({
+    required int customerId,
     required int employeeId,
+    required int shipperId,
+    required int productId,
   });
 }
 

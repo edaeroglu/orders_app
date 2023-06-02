@@ -18,16 +18,14 @@ final generalProvider =
 class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
   late final GeneralRepository service;
   // late final ShipperRepository shipperService;
-  // late final EmployeeRepository employeeService;
 
   Future<void> _init() async {
     service = getIt<GeneralRepository>();
     // shipperService = getIt<ShipperRepository>();
-    // employeeService = getIt<EmployeeRepository>();
 
     state = AsyncData(GeneralState.initial());
 
-    Future.wait([getCustomers(), getShippers(), getEmployees()]);
+    Future.wait([getCustomers(), getShippers(), getEmployees(), getProducts()]);
 
     log(state.value!.customers.toString());
   }
@@ -46,6 +44,11 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
   Future<void> getEmployees() async {
     var a = await service.getEmployees();
     state = AsyncData(state.value!.copyWith(employees: a));
+  }
+
+  Future<void> getProducts() async {
+    var a = await service.getProducts();
+    state = AsyncData(state.value!.copyWith(products: a));
   }
 
   @override
@@ -68,16 +71,16 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
         AsyncData(state.value!.copyWith(selectedEmployee: selectedEmployee));
   }
 
-  // void selectProduct(ProductModel selectedProduct) {
-  //   state = AsyncData(state.value!.copyWith(selectedProduct: selectedProduct));
-  // }
+  void selectProduct(ProductModel selectedProduct) {
+    state = AsyncData(state.value!.copyWith(selectedProduct: selectedProduct));
+  }
 
-  Future<void> insertCustomer() async {
-    OrderModel response = await service.insertCustomer(
+  Future<void> insertOrder() async {
+    OrderModel response = await service.insertOrder(
       customerId: state.value!.selectedCustomer!.customerid!,
       employeeId: state.value!.selectedEmployee!.employeeid!,
       shipperId: state.value!.selectedShipper!.shipperid!,
-      // productId: state.value!.selectedProduct!.productid!,
+      productId: state.value!.selectedProduct!.productid!,
     );
 
     log(response.toString());
@@ -90,15 +93,18 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
     // await ref.read(orderProvider.notifier).getOrder();
   }
 
-  Future<void> deleteCustomer() async {
-    OrderModel response = await service.deleteCustomer(
-      orderId: state.value!.selectedOrder!.orderid!,
+  Future<void> updateOrder() async {
+    OrderModel response = await service.updateOrder(
+      customerId: state.value!.selectedOrder!.customerid!,
+      employeeId: state.value!.selectedOrder!.employeeid!,
+      shipperId: state.value!.selectedOrder!.shipperid!,
+      productId: state.value!.selectedProduct!.productid!,
     );
 
     log(response.toString());
 
     if (response.orderid != null) {
-      ref.read(orderProvider.notifier).removeList(response);
+      ref.read(orderProvider.notifier).updateList(response);
     }
   }
 }

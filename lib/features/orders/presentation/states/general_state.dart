@@ -18,7 +18,7 @@ class GeneralState with _$GeneralState {
     required ShipperModel? selectedShipper,
     required EmployeeModel? selectedEmployee,
     required OrderModel? selectedOrder,
-    required ProductModel? selectProduct,
+    required ProductModel? selectedProduct,
   }) = _GeneralState;
 
   factory GeneralState.initial() => GeneralState(
@@ -30,5 +30,5 @@ class GeneralState with _$GeneralState {
       selectedShipper: null,
       selectedEmployee: null,
       selectedOrder: null,
-      selectProduct: null);
+      selectedProduct: null);
 }

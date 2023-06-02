@@ -20,7 +20,12 @@ mixin _$OrderState {
   List<Customer> get customers => throw _privateConstructorUsedError;
   bool? get insertOrderResponse => throw _privateConstructorUsedError;
   bool? get deleteOrderResponse => throw _privateConstructorUsedError;
+  bool? get updateOrderResponse => throw _privateConstructorUsedError;
   OrderModel? get selectedOrder => throw _privateConstructorUsedError;
+  CustomerModel? get selectedCustomer => throw _privateConstructorUsedError;
+  ShipperModel? get selectedShipper => throw _privateConstructorUsedError;
+  EmployeeModel? get selectedEmployee => throw _privateConstructorUsedError;
+  ProductModel? get selectedProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderStateCopyWith<OrderState> get copyWith =>
@@ -38,9 +43,18 @@ abstract class $OrderStateCopyWith<$Res> {
       List<Customer> customers,
       bool? insertOrderResponse,
       bool? deleteOrderResponse,
-      OrderModel? selectedOrder});
+      bool? updateOrderResponse,
+      OrderModel? selectedOrder,
+      CustomerModel? selectedCustomer,
+      ShipperModel? selectedShipper,
+      EmployeeModel? selectedEmployee,
+      ProductModel? selectedProduct});
 
   $OrderModelCopyWith<$Res>? get selectedOrder;
+  $CustomerModelCopyWith<$Res>? get selectedCustomer;
+  $ShipperModelCopyWith<$Res>? get selectedShipper;
+  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -60,7 +74,12 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
     Object? customers = null,
     Object? insertOrderResponse = freezed,
     Object? deleteOrderResponse = freezed,
+    Object? updateOrderResponse = freezed,
     Object? selectedOrder = freezed,
+    Object? selectedCustomer = freezed,
+    Object? selectedShipper = freezed,
+    Object? selectedEmployee = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_value.copyWith(
       orders: null == orders
@@ -79,10 +98,30 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
           ? _value.deleteOrderResponse
           : deleteOrderResponse // ignore: cast_nullable_to_non_nullable
               as bool?,
+      updateOrderResponse: freezed == updateOrderResponse
+          ? _value.updateOrderResponse
+          : updateOrderResponse // ignore: cast_nullable_to_non_nullable
+              as bool?,
       selectedOrder: freezed == selectedOrder
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
               as OrderModel?,
+      selectedCustomer: freezed == selectedCustomer
+          ? _value.selectedCustomer
+          : selectedCustomer // ignore: cast_nullable_to_non_nullable
+              as CustomerModel?,
+      selectedShipper: freezed == selectedShipper
+          ? _value.selectedShipper
+          : selectedShipper // ignore: cast_nullable_to_non_nullable
+              as ShipperModel?,
+      selectedEmployee: freezed == selectedEmployee
+          ? _value.selectedEmployee
+          : selectedEmployee // ignore: cast_nullable_to_non_nullable
+              as EmployeeModel?,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
     ) as $Val);
   }
 
@@ -95,6 +134,54 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 
     return $OrderModelCopyWith<$Res>(_value.selectedOrder!, (value) {
       return _then(_value.copyWith(selectedOrder: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerModelCopyWith<$Res>? get selectedCustomer {
+    if (_value.selectedCustomer == null) {
+      return null;
+    }
+
+    return $CustomerModelCopyWith<$Res>(_value.selectedCustomer!, (value) {
+      return _then(_value.copyWith(selectedCustomer: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShipperModelCopyWith<$Res>? get selectedShipper {
+    if (_value.selectedShipper == null) {
+      return null;
+    }
+
+    return $ShipperModelCopyWith<$Res>(_value.selectedShipper!, (value) {
+      return _then(_value.copyWith(selectedShipper: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EmployeeModelCopyWith<$Res>? get selectedEmployee {
+    if (_value.selectedEmployee == null) {
+      return null;
+    }
+
+    return $EmployeeModelCopyWith<$Res>(_value.selectedEmployee!, (value) {
+      return _then(_value.copyWith(selectedEmployee: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductModelCopyWith<$Res>? get selectedProduct {
+    if (_value.selectedProduct == null) {
+      return null;
+    }
+
+    return $ProductModelCopyWith<$Res>(_value.selectedProduct!, (value) {
+      return _then(_value.copyWith(selectedProduct: value) as $Val);
     });
   }
 }
@@ -112,10 +199,23 @@ abstract class _$$_OrderStateCopyWith<$Res>
       List<Customer> customers,
       bool? insertOrderResponse,
       bool? deleteOrderResponse,
-      OrderModel? selectedOrder});
+      bool? updateOrderResponse,
+      OrderModel? selectedOrder,
+      CustomerModel? selectedCustomer,
+      ShipperModel? selectedShipper,
+      EmployeeModel? selectedEmployee,
+      ProductModel? selectedProduct});
 
   @override
   $OrderModelCopyWith<$Res>? get selectedOrder;
+  @override
+  $CustomerModelCopyWith<$Res>? get selectedCustomer;
+  @override
+  $ShipperModelCopyWith<$Res>? get selectedShipper;
+  @override
+  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  @override
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -133,7 +233,12 @@ class __$$_OrderStateCopyWithImpl<$Res>
     Object? customers = null,
     Object? insertOrderResponse = freezed,
     Object? deleteOrderResponse = freezed,
+    Object? updateOrderResponse = freezed,
     Object? selectedOrder = freezed,
+    Object? selectedCustomer = freezed,
+    Object? selectedShipper = freezed,
+    Object? selectedEmployee = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_$_OrderState(
       orders: null == orders
@@ -152,10 +257,30 @@ class __$$_OrderStateCopyWithImpl<$Res>
           ? _value.deleteOrderResponse
           : deleteOrderResponse // ignore: cast_nullable_to_non_nullable
               as bool?,
+      updateOrderResponse: freezed == updateOrderResponse
+          ? _value.updateOrderResponse
+          : updateOrderResponse // ignore: cast_nullable_to_non_nullable
+              as bool?,
       selectedOrder: freezed == selectedOrder
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
               as OrderModel?,
+      selectedCustomer: freezed == selectedCustomer
+          ? _value.selectedCustomer
+          : selectedCustomer // ignore: cast_nullable_to_non_nullable
+              as CustomerModel?,
+      selectedShipper: freezed == selectedShipper
+          ? _value.selectedShipper
+          : selectedShipper // ignore: cast_nullable_to_non_nullable
+              as ShipperModel?,
+      selectedEmployee: freezed == selectedEmployee
+          ? _value.selectedEmployee
+          : selectedEmployee // ignore: cast_nullable_to_non_nullable
+              as EmployeeModel?,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductModel?,
     ));
   }
 }
@@ -168,7 +293,12 @@ class _$_OrderState implements _OrderState {
       required final List<Customer> customers,
       required this.insertOrderResponse,
       required this.deleteOrderResponse,
-      required this.selectedOrder})
+      required this.updateOrderResponse,
+      required this.selectedOrder,
+      required this.selectedCustomer,
+      required this.selectedShipper,
+      required this.selectedEmployee,
+      required this.selectedProduct})
       : _orders = orders,
         _customers = customers;
 
@@ -193,11 +323,21 @@ class _$_OrderState implements _OrderState {
   @override
   final bool? deleteOrderResponse;
   @override
+  final bool? updateOrderResponse;
+  @override
   final OrderModel? selectedOrder;
+  @override
+  final CustomerModel? selectedCustomer;
+  @override
+  final ShipperModel? selectedShipper;
+  @override
+  final EmployeeModel? selectedEmployee;
+  @override
+  final ProductModel? selectedProduct;
 
   @override
   String toString() {
-    return 'OrderState(orders: $orders, customers: $customers, insertOrderResponse: $insertOrderResponse, deleteOrderResponse: $deleteOrderResponse, selectedOrder: $selectedOrder)';
+    return 'OrderState(orders: $orders, customers: $customers, insertOrderResponse: $insertOrderResponse, deleteOrderResponse: $deleteOrderResponse, updateOrderResponse: $updateOrderResponse, selectedOrder: $selectedOrder, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -212,8 +352,18 @@ class _$_OrderState implements _OrderState {
                 other.insertOrderResponse == insertOrderResponse) &&
             (identical(other.deleteOrderResponse, deleteOrderResponse) ||
                 other.deleteOrderResponse == deleteOrderResponse) &&
+            (identical(other.updateOrderResponse, updateOrderResponse) ||
+                other.updateOrderResponse == updateOrderResponse) &&
             (identical(other.selectedOrder, selectedOrder) ||
-                other.selectedOrder == selectedOrder));
+                other.selectedOrder == selectedOrder) &&
+            (identical(other.selectedCustomer, selectedCustomer) ||
+                other.selectedCustomer == selectedCustomer) &&
+            (identical(other.selectedShipper, selectedShipper) ||
+                other.selectedShipper == selectedShipper) &&
+            (identical(other.selectedEmployee, selectedEmployee) ||
+                other.selectedEmployee == selectedEmployee) &&
+            (identical(other.selectedProduct, selectedProduct) ||
+                other.selectedProduct == selectedProduct));
   }
 
   @override
@@ -223,7 +373,12 @@ class _$_OrderState implements _OrderState {
       const DeepCollectionEquality().hash(_customers),
       insertOrderResponse,
       deleteOrderResponse,
-      selectedOrder);
+      updateOrderResponse,
+      selectedOrder,
+      selectedCustomer,
+      selectedShipper,
+      selectedEmployee,
+      selectedProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -238,7 +393,12 @@ abstract class _OrderState implements OrderState {
       required final List<Customer> customers,
       required final bool? insertOrderResponse,
       required final bool? deleteOrderResponse,
-      required final OrderModel? selectedOrder}) = _$_OrderState;
+      required final bool? updateOrderResponse,
+      required final OrderModel? selectedOrder,
+      required final CustomerModel? selectedCustomer,
+      required final ShipperModel? selectedShipper,
+      required final EmployeeModel? selectedEmployee,
+      required final ProductModel? selectedProduct}) = _$_OrderState;
 
   @override
   List<OrderModel> get orders;
@@ -249,7 +409,17 @@ abstract class _OrderState implements OrderState {
   @override
   bool? get deleteOrderResponse;
   @override
+  bool? get updateOrderResponse;
+  @override
   OrderModel? get selectedOrder;
+  @override
+  CustomerModel? get selectedCustomer;
+  @override
+  ShipperModel? get selectedShipper;
+  @override
+  EmployeeModel? get selectedEmployee;
+  @override
+  ProductModel? get selectedProduct;
   @override
   @JsonKey(ignore: true)
   _$$_OrderStateCopyWith<_$_OrderState> get copyWith =>

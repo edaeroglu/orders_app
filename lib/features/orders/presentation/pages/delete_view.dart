@@ -58,7 +58,7 @@ class DeleteView extends ConsumerWidget {
                                 .read(orderProvider.notifier)
                                 .deleteOrder();
                             // ignore: use_build_context_synchronously
-                            context.router.popAndPush(const OrderRoute());
+                            context.router.popAndPush(const OptionsRoute());
                           },
                         ),
                       ]),

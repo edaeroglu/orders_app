@@ -15,10 +15,10 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CustomerRoute.name: (routeData) {
+    OptionsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CustomerView(),
+        child: const OptionsView(),
       );
     },
     OrderDetailRoute.name: (routeData) {
@@ -33,12 +33,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderView(),
       );
     },
-    UpdateRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const UpdateView(),
-      );
-    },
     OrderWrapperRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -51,19 +45,31 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DeleteView(),
       );
     },
+    AddRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddView(),
+      );
+    },
+    UpdateRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UpdateView(),
+      );
+    },
   };
 }
 
 /// generated route for
-/// [CustomerView]
-class CustomerRoute extends PageRouteInfo<void> {
-  const CustomerRoute({List<PageRouteInfo>? children})
+/// [OptionsView]
+class OptionsRoute extends PageRouteInfo<void> {
+  const OptionsRoute({List<PageRouteInfo>? children})
       : super(
-          CustomerRoute.name,
+          OptionsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CustomerRoute';
+  static const String name = 'OptionsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -97,20 +103,6 @@ class OrderRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [UpdateView]
-class UpdateRoute extends PageRouteInfo<void> {
-  const UpdateRoute({List<PageRouteInfo>? children})
-      : super(
-          UpdateRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UpdateRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [OrderWrapperView]
 class OrderWrapperRoute extends PageRouteInfo<void> {
   const OrderWrapperRoute({List<PageRouteInfo>? children})
@@ -134,6 +126,34 @@ class DeleteRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DeleteRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddView]
+class AddRoute extends PageRouteInfo<void> {
+  const AddRoute({List<PageRouteInfo>? children})
+      : super(
+          AddRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UpdateView]
+class UpdateRoute extends PageRouteInfo<void> {
+  const UpdateRoute({List<PageRouteInfo>? children})
+      : super(
+          UpdateRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UpdateRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:deneme/features/orders/domain/models/order_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../features/orders/domain/models/customer.dart';
@@ -145,6 +146,46 @@ class ShipperDetailsButton extends StatelessWidget {
         );
       },
       child: const Text("Shipper Details"),
+    );
+  }
+}
+
+class ProductDetailsButton extends StatelessWidget {
+  const ProductDetailsButton({
+    super.key,
+    required this.orderDetail,
+  });
+
+  final OrderDetail? orderDetail;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Product Details'),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Product Id: ${orderDetail?.productid}'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: const Text('Close'),
+                  onPressed: () {
+                    context.popRoute();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: const Text("Product Details"),
     );
   }
 }

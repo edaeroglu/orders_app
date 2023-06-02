@@ -107,8 +107,8 @@ class __$$_ProductModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductModel implements _ProductModel {
-  _$_ProductModel({this.productid, this.productname});
+class _$_ProductModel extends _ProductModel {
+  _$_ProductModel({this.productid, this.productname}) : super._();
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductModelFromJson(json);
@@ -117,11 +117,6 @@ class _$_ProductModel implements _ProductModel {
   final int? productid;
   @override
   final String? productname;
-
-  @override
-  String toString() {
-    return 'ProductModel(productid: $productid, productname: $productname)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -152,9 +147,10 @@ class _$_ProductModel implements _ProductModel {
   }
 }
 
-abstract class _ProductModel implements ProductModel {
+abstract class _ProductModel extends ProductModel {
   factory _ProductModel({final int? productid, final String? productname}) =
       _$_ProductModel;
+  _ProductModel._() : super._();
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$_ProductModel.fromJson;

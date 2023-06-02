@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
+import 'package:deneme/product/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/buttons.dart';
@@ -19,7 +20,6 @@ class OrderView extends ConsumerWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        final customer = state.orders[index].customer;
                         // final customerName = clickedCustomer.customername;
                         showDialog(
                           context: context,
@@ -37,6 +37,13 @@ class OrderView extends ConsumerWidget {
                                   ShipperDetailsButton(
                                     shipper: state.orders[index].shipper,
                                   ),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        context.pushRoute(const UpdateRoute());
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.blue[200]),
+                                      child: const Text("Güncelle")),
                                 ],
                               ),
                               actions: [

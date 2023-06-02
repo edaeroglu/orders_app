@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/dropdown_menu.dart';
 
 @RoutePage()
-class CustomerView extends ConsumerWidget {
-  const CustomerView({super.key});
+class OptionsView extends ConsumerWidget {
+  const OptionsView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -20,10 +20,10 @@ class CustomerState with _$CustomerState {
 
   factory CustomerState.initial() => CustomerState(
       customers: [],
-      selectedCustomer: null,
       shippers: [],
       employees: [],
       products: [],
+      selectedCustomer: null,
       selectedShipper: null,
       selectedEmployee: null);
 }

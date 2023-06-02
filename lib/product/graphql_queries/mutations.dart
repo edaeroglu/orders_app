@@ -1,7 +1,7 @@
 class Mutations {
   static const insertOrder =
-      r'''mutation MyMutation($customerid: Int = 90, $employeeid: Int = 5, $shipperid: Int = 10) {
-  insert_orders_one(object: {employeeid: $employeeid, customerid: $customerid, shipperid: $shipperid}) {
+      r'''mutation MyMutation($customerid: Int = 90, $employeeid: Int = 5, $shipperid: Int = 10, $productid: Int = 18) {
+  insert_orders_one(object: {employeeid: $employeeid, customerid: $customerid, shipperid: $shipperid, order_details: {data: {productid: $productid}}}) {
     orderid
     orderdate
     employeeid
@@ -44,4 +44,6 @@ mutation MyMutation2($order_id: Int!) {
   }
 }
 ''';
+
+  static const updateOrder = r''' ''';
 }

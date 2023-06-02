@@ -24,7 +24,7 @@ mixin _$GeneralState {
   ShipperModel? get selectedShipper => throw _privateConstructorUsedError;
   EmployeeModel? get selectedEmployee => throw _privateConstructorUsedError;
   OrderModel? get selectedOrder => throw _privateConstructorUsedError;
-  ProductModel? get selectProduct => throw _privateConstructorUsedError;
+  ProductModel? get selectedProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GeneralStateCopyWith<GeneralState> get copyWith =>
@@ -46,13 +46,13 @@ abstract class $GeneralStateCopyWith<$Res> {
       ShipperModel? selectedShipper,
       EmployeeModel? selectedEmployee,
       OrderModel? selectedOrder,
-      ProductModel? selectProduct});
+      ProductModel? selectedProduct});
 
   $CustomerModelCopyWith<$Res>? get selectedCustomer;
   $ShipperModelCopyWith<$Res>? get selectedShipper;
   $EmployeeModelCopyWith<$Res>? get selectedEmployee;
   $OrderModelCopyWith<$Res>? get selectedOrder;
-  $ProductModelCopyWith<$Res>? get selectProduct;
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
     Object? selectedShipper = freezed,
     Object? selectedEmployee = freezed,
     Object? selectedOrder = freezed,
-    Object? selectProduct = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_value.copyWith(
       customers: null == customers
@@ -111,9 +111,9 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
               as OrderModel?,
-      selectProduct: freezed == selectProduct
-          ? _value.selectProduct
-          : selectProduct // ignore: cast_nullable_to_non_nullable
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
               as ProductModel?,
     ) as $Val);
   }
@@ -168,13 +168,13 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductModelCopyWith<$Res>? get selectProduct {
-    if (_value.selectProduct == null) {
+  $ProductModelCopyWith<$Res>? get selectedProduct {
+    if (_value.selectedProduct == null) {
       return null;
     }
 
-    return $ProductModelCopyWith<$Res>(_value.selectProduct!, (value) {
-      return _then(_value.copyWith(selectProduct: value) as $Val);
+    return $ProductModelCopyWith<$Res>(_value.selectedProduct!, (value) {
+      return _then(_value.copyWith(selectedProduct: value) as $Val);
     });
   }
 }
@@ -196,7 +196,7 @@ abstract class _$$_GeneralStateCopyWith<$Res>
       ShipperModel? selectedShipper,
       EmployeeModel? selectedEmployee,
       OrderModel? selectedOrder,
-      ProductModel? selectProduct});
+      ProductModel? selectedProduct});
 
   @override
   $CustomerModelCopyWith<$Res>? get selectedCustomer;
@@ -207,7 +207,7 @@ abstract class _$$_GeneralStateCopyWith<$Res>
   @override
   $OrderModelCopyWith<$Res>? get selectedOrder;
   @override
-  $ProductModelCopyWith<$Res>? get selectProduct;
+  $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -229,7 +229,7 @@ class __$$_GeneralStateCopyWithImpl<$Res>
     Object? selectedShipper = freezed,
     Object? selectedEmployee = freezed,
     Object? selectedOrder = freezed,
-    Object? selectProduct = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_$_GeneralState(
       customers: null == customers
@@ -264,9 +264,9 @@ class __$$_GeneralStateCopyWithImpl<$Res>
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
               as OrderModel?,
-      selectProduct: freezed == selectProduct
-          ? _value.selectProduct
-          : selectProduct // ignore: cast_nullable_to_non_nullable
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
               as ProductModel?,
     ));
   }
@@ -284,7 +284,7 @@ class _$_GeneralState implements _GeneralState {
       required this.selectedShipper,
       required this.selectedEmployee,
       required this.selectedOrder,
-      required this.selectProduct})
+      required this.selectedProduct})
       : _customers = customers,
         _shippers = shippers,
         _employees = employees,
@@ -331,11 +331,11 @@ class _$_GeneralState implements _GeneralState {
   @override
   final OrderModel? selectedOrder;
   @override
-  final ProductModel? selectProduct;
+  final ProductModel? selectedProduct;
 
   @override
   String toString() {
-    return 'GeneralState(customers: $customers, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedOrder: $selectedOrder, selectProduct: $selectProduct)';
+    return 'GeneralState(customers: $customers, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedOrder: $selectedOrder, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -357,8 +357,8 @@ class _$_GeneralState implements _GeneralState {
                 other.selectedEmployee == selectedEmployee) &&
             (identical(other.selectedOrder, selectedOrder) ||
                 other.selectedOrder == selectedOrder) &&
-            (identical(other.selectProduct, selectProduct) ||
-                other.selectProduct == selectProduct));
+            (identical(other.selectedProduct, selectedProduct) ||
+                other.selectedProduct == selectedProduct));
   }
 
   @override
@@ -372,7 +372,7 @@ class _$_GeneralState implements _GeneralState {
       selectedShipper,
       selectedEmployee,
       selectedOrder,
-      selectProduct);
+      selectedProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -391,7 +391,7 @@ abstract class _GeneralState implements GeneralState {
       required final ShipperModel? selectedShipper,
       required final EmployeeModel? selectedEmployee,
       required final OrderModel? selectedOrder,
-      required final ProductModel? selectProduct}) = _$_GeneralState;
+      required final ProductModel? selectedProduct}) = _$_GeneralState;
 
   @override
   List<CustomerModel> get customers;
@@ -410,7 +410,7 @@ abstract class _GeneralState implements GeneralState {
   @override
   OrderModel? get selectedOrder;
   @override
-  ProductModel? get selectProduct;
+  ProductModel? get selectedProduct;
   @override
   @JsonKey(ignore: true)
   _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith =>

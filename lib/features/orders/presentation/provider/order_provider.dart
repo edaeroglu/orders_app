@@ -22,14 +22,27 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
   }
 
   void addList(OrderModel order) {
-    state = AsyncData(state.value!.copyWith(
-        orders: [...state.value!.orders]
-          ..insert(0, order))); // hangi indexe ekleneceği
+    state = AsyncData(
+      state.value!.copyWith(
+        orders: [...state.value!.orders]..insert(0, order),
+      ),
+    ); // hangi indexe ekleneceği
   }
 
-  void removeList(OrderModel order) {
+  void removeList(int id) {
     state = AsyncData(
-        state.value!.copyWith(orders: [...state.value!.orders]..remove(order)));
+      state.value!.copyWith(
+        orders: [...state.value!.orders]
+          ..removeWhere((element) => element.orderid == id),
+      ),
+    ); // immutable olduğu için liste değişmedi. o yüzden bu şekilde kullanıldı.
+  }
+
+  void updateList(OrderModel newOrder) {
+    state = AsyncData(state.value!.copyWith(
+        orders: [...state.value!.orders]
+          ..map((order) => order.orderid == newOrder.orderid ? newOrder : order)
+              .toList()));
   }
 
   Future<OrderState> getOrders() async {
@@ -38,46 +51,54 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
 
     return AsyncData(
             OrderState.initial().copyWith(orders: await service.getOrders()))
-        .value;
+        .value; // o yüzden bu şekilde yazıldı
   }
 
   void selectOrder(OrderModel selectedOrder) {
     state = AsyncData(state.value!.copyWith(selectedOrder: selectedOrder));
   }
 
-  Future<OrderState> insertOrder(
-      {required int customerId,
-      required int employeeId,
-      required int shipperId,
-      required int productId,
-      required int quantity}) async {
-    return state.value!.copyWith(
-        insertOrderResponse: await service.insertOrder(
-            customerId: customerId,
-            employeeId: employeeId,
-            shipperId: shipperId,
-            productId: productId,
-            quantity: quantity));
-  }
-
-  // Future<OrderState> deleteOrder({
-  //   required int orderId,
-  // }) async {
-  //   return state.value!.copyWith(
-  //       deleteOrderResponse: await service.deleteOrder(
-  //     orderId: orderId,
-  //   ));
-  // }
-
   Future<void> deleteOrder() async {
-    OrderModel response = await service.deleteOrder(
+    int response = await service.deleteOrder(
       orderId: state.value!.selectedOrder!.orderid!,
     );
 
     log(response.toString());
 
-    if (response.orderid != null) {
-      ref.read(orderProvider.notifier).removeList(response);
+    if (response != 0) {
+      ref
+          .read(orderProvider.notifier)
+          .removeList(state.value!.selectedOrder!.orderid!);
     }
   }
+
+// Future<OrderState> insertOrder(
+  //     {required int customerId,
+  //     required int employeeId,
+  //     required int shipperId,
+  //     required int productId,
+  //     required int quantity}) async {
+  //   return state.value!.copyWith(
+  //       insertOrderResponse: await service.insertOrder(
+  //           customerId: customerId,
+  //           employeeId: employeeId,
+  //           shipperId: shipperId,
+  //           productId: productId,
+  //           quantity: quantity));
+  // }
+  // Future<void> updateOrder() async {
+  //   OrderModel response = await service.updateOrder(
+  //     orderId: state.value!.selectedOrder!.orderid!,
+  //     customerId: state.value!.selectedOrder!.customerid!,
+  //     employeeId: state.value!.selectedOrder!.employeeid!,
+  //     shipperId: state.value!.selectedOrder!.shipperid!,
+  //     productId: state.value!.selectedProduct!.productId,
+  //   );
+
+  //   log(response.toString());
+
+  //   if (response.orderid != null) {
+  //     ref.read(orderProvider.notifier).updateList(response);
+  //   }
+  // }
 }
