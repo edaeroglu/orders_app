@@ -1,10 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../domain/models/customer.dart';
-import '../../domain/models/customer_model/customer_model.dart';
-import '../../domain/models/employee_model/employee_model.dart';
 import '../../domain/models/order_model.dart';
-import '../../domain/models/product_model/product_model.dart';
-import '../../domain/models/shipper_model/shipper_model.dart';
 
 part 'order_state.freezed.dart';
 
@@ -17,12 +13,7 @@ class OrderState with _$OrderState {
     required bool? deleteOrderResponse,
     required bool? updateOrderResponse,
     required OrderModel? selectedOrder,
-    required CustomerModel? selectedCustomer,
-    required ShipperModel? selectedShipper,
-    required EmployeeModel? selectedEmployee,
-    required ProductModel? selectedProduct,
   }) = _OrderState;
-
   factory OrderState.initial() => OrderState(
         orders: [],
         customers: [],
@@ -30,9 +21,5 @@ class OrderState with _$OrderState {
         deleteOrderResponse: null,
         updateOrderResponse: null,
         selectedOrder: null,
-        selectedCustomer: null,
-        selectedEmployee: null,
-        selectedProduct: null,
-        selectedShipper: null,
       );
 }

@@ -16,34 +16,18 @@ class GeneralRepositoryImpl implements GeneralRepository {
   GeneralRepositoryImpl(this.graphQLService);
 
   @override
-  Future<List<OrderModel>> getOrders() async {
-    var response = await graphQLService.query(Queries.getOrders);
-    return response['orders']
-        .map<OrderModel>((e) => OrderModel.fromJson(e))
-        .toList();
-  }
-
-  @override
-  Future<List<CustomerModel>> getCustomers() async {
-    var response = await graphQLService.query(Queries.getCustomers);
-    return response['customers']
-        .map<CustomerModel>((e) => CustomerModel.fromJson(e))
-        .toList();
-  }
-
-  @override
   Future<OrderModel> insertOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    required int productId,
+    // required int productId,
   }) async {
     var response =
         await graphQLService.mutate(Mutations.insertOrder, variables: {
       "customerid": customerId,
       "employeeid": employeeId,
       "shipperid": shipperId,
-      "productid": productId,
+      // "productid": productId,
     });
     return OrderModel.fromJson(response['insert_orders_one']);
   }
@@ -53,17 +37,25 @@ class GeneralRepositoryImpl implements GeneralRepository {
     required int customerId,
     required int employeeId,
     required int shipperId,
-    required int productId,
+    // required int productId,
   }) async {
     var response =
         await graphQLService.mutate(Mutations.updateOrder, variables: {
       "customerid": customerId,
       "employeeid": employeeId,
       "shipperid": shipperId,
-      "productid": productId,
+      // "productid": productId,
     });
 
     return OrderModel.fromJson(response['update_orders']);
+  }
+
+  @override
+  Future<List<CustomerModel>> getCustomers() async {
+    var response = await graphQLService.query(Queries.getCustomers);
+    return response['customers']
+        .map<CustomerModel>((e) => CustomerModel.fromJson(e))
+        .toList();
   }
 
   @override

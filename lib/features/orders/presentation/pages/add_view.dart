@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/domain/models/customer_model/customer_model.dart';
-import 'package:deneme/features/orders/domain/models/product_model/product_model.dart';
 import 'package:deneme/product/routes/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -21,77 +20,75 @@ class AddView extends ConsumerWidget {
         body: ref.watch(generalProvider).when(
               data: (state) {
                 return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 100),
-                    child: Column(
-                      children: [
-                        // Padding(
-                        //   padding: const EdgeInsets.only(bottom: 40),
-                        //   child: DropdownButtonHideUnderline(
-                        //     child: DropdownButton2(
-                        //       isExpanded: true,
-                        //       hint: Text(
-                        //         "Customers",
-                        //         style: TextStyle(
-                        //           fontSize: 14,
-                        //           color: Theme.of(context).hintColor,
-                        //         ),
-                        //       ),
-                        //       items: state.customers
-                        //           .map((e) => DropdownMenuItem(
-                        //               value: e,
-                        //               child: Text(e.customername ?? "")))
-                        //           .toList(),
-                        //       onChanged: (value) {},
-                        //       menuItemStyleData: const MenuItemStyleData(
-                        //         height: 40,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        DropdownMenu<CustomerModel>(
-                          items: state.customers,
-                          text: "Customer Name",
-                          onChanged: (item) {
-                            provider.selectCustomer(item ?? CustomerModel());
+                  child: Column(
+                    children: [
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 40),
+                      //   child: DropdownButtonHideUnderline(
+                      //     child: DropdownButton2(
+                      //       isExpanded: true,
+                      //       hint: Text(
+                      //         "Customers",
+                      //         style: TextStyle(
+                      //           fontSize: 14,
+                      //           color: Theme.of(context).hintColor,
+                      //         ),
+                      //       ),
+                      //       items: state.customers
+                      //           .map((e) => DropdownMenuItem(
+                      //               value: e,
+                      //               child: Text(e.customername ?? "")))
+                      //           .toList(),
+                      //       onChanged: (value) {},
+                      //       menuItemStyleData: const MenuItemStyleData(
+                      //         height: 40,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      const Padding(padding: EdgeInsets.only(top: 180)),
+                      DropdownMenu<CustomerModel>(
+                        items: state.customers,
+                        text: "Customer Name",
+                        onChanged: (item) {
+                          provider.selectCustomer(item ?? CustomerModel());
+                        },
+                        value: state.selectedCustomer,
+                      ),
+                      DropdownMenu<EmployeeModel>(
+                        items: state.employees,
+                        text: "Employee Name",
+                        onChanged: (item) {
+                          provider.selectEmployee(item ?? EmployeeModel());
+                        },
+                        value: state.selectedEmployee,
+                      ),
+                      DropdownMenu<ShipperModel>(
+                        items: state.shippers,
+                        text: "Shipper Name",
+                        onChanged: (item) {
+                          provider.selectShipper(item ?? ShipperModel());
+                        },
+                        value: state.selectedShipper,
+                      ),
+                      // DropdownMenu<ProductModel>(
+                      //   items: state.products,
+                      //   text: "Product Name",
+                      //   onChanged: (item) {
+                      //     provider.selectProduct(item ?? ProductModel());
+                      //   },
+                      //   value: state.selectedProduct,
+                      // ),
+                      CrudButton(
+                          onPressed: () async {
+                            await ref
+                                .read(generalProvider.notifier)
+                                .insertOrder();
+                            // ignore: use_build_context_synchronously
+                            context.router.popAndPush(const OrderRoute());
                           },
-                          value: state.selectedCustomer,
-                        ),
-                        DropdownMenu<EmployeeModel>(
-                          items: state.employees,
-                          text: "Employee Name",
-                          onChanged: (item) {
-                            provider.selectEmployee(item ?? EmployeeModel());
-                          },
-                          value: state.selectedEmployee,
-                        ),
-                        DropdownMenu<ShipperModel>(
-                          items: state.shippers,
-                          text: "Shipper Name",
-                          onChanged: (item) {
-                            provider.selectShipper(item ?? ShipperModel());
-                          },
-                          value: state.selectedShipper,
-                        ),
-                        DropdownMenu<ProductModel>(
-                          items: state.products,
-                          text: "Product Name",
-                          onChanged: (item) {
-                            provider.selectProduct(item ?? ProductModel());
-                          },
-                          value: state.selectedProduct,
-                        ),
-                        CrudButton(
-                            onPressed: () async {
-                              await ref
-                                  .read(generalProvider.notifier)
-                                  .insertOrder();
-                              // ignore: use_build_context_synchronously
-                              context.router.popAndPush(const OrderRoute());
-                            },
-                            text: "Ekle")
-                      ],
-                    ),
+                          text: "Ekle")
+                    ],
                   ),
                 );
               },

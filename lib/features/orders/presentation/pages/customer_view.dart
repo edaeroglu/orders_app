@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:deneme/product/components/buttons.dart';
+import 'package:deneme/product/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../../product/components/dropdown_menu.dart';
 
 @RoutePage()
 class OptionsView extends ConsumerWidget {
@@ -17,18 +17,36 @@ class OptionsView extends ConsumerWidget {
           padding: const EdgeInsets.only(top: 150),
           child: Column(
             children: [
-              CrudDropdownMenu(
-                text: "Order",
+              CrudButton(
+                text: "Ekle",
+                onPressed: () {
+                  context.pushRoute(const AddRoute());
+                },
               ),
-              CrudDropdownMenu(
-                text: "Customer",
+              CrudButton(
+                text: "Sil",
+                onPressed: () {
+                  context.pushRoute(const DeleteRoute());
+                },
               ),
-              CrudDropdownMenu(
-                text: "Employee",
+              CrudButton(
+                text: "Güncelle",
+                onPressed: () {
+                  context.pushRoute(const UpdateRoute());
+                },
               ),
-              CrudDropdownMenu(
-                text: "Shipper",
-              )
+              // CrudDropdownMenu(
+              //   text: "Order",
+              // ),
+              // CrudDropdownMenu(
+              //   text: "Customer",
+              // ),
+              // CrudDropdownMenu(
+              //   text: "Employee",
+              // ),
+              // CrudDropdownMenu(
+              //   text: "Shipper",
+              // )
             ],
           ),
         ),

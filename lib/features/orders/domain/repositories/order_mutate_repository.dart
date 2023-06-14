@@ -5,7 +5,6 @@ import '../models/customer_model/customer_model.dart';
 import '../models/order_model.dart';
 
 abstract class GeneralRepository {
-  Future<List<OrderModel>> getOrders();
   Future<List<CustomerModel>> getCustomers();
   Future<List<EmployeeModel>> getEmployees();
   Future<List<ProductModel>> getProducts();
@@ -15,14 +14,14 @@ abstract class GeneralRepository {
     required int customerId,
     required int employeeId,
     required int shipperId,
-    required int productId,
+    // required int productId,
   });
 
   Future<OrderModel> updateOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    required int productId,
+    // required int productId,
   });
 }
 

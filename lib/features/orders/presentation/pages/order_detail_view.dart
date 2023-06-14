@@ -1,6 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
+import 'package:deneme/features/orders/presentation/provider/order_mutate_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,7 +11,7 @@ class OrderDetailView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: ref.watch(orderProvider).when(
+      body: ref.watch(generalProvider).when(
           data: (state) {
             return Center(
               child: Column(

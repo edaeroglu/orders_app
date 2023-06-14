@@ -10,25 +10,28 @@ part 'general_state.freezed.dart';
 @freezed
 class GeneralState with _$GeneralState {
   factory GeneralState({
+    required List<OrderModel> orders,
     required List<CustomerModel> customers,
     required List<ShipperModel> shippers,
     required List<EmployeeModel> employees,
     required List<ProductModel> products,
+    required OrderModel? selectedOrder,
     required CustomerModel? selectedCustomer,
     required ShipperModel? selectedShipper,
     required EmployeeModel? selectedEmployee,
-    required OrderModel? selectedOrder,
     required ProductModel? selectedProduct,
   }) = _GeneralState;
 
   factory GeneralState.initial() => GeneralState(
-      customers: [],
-      shippers: [],
-      employees: [],
-      products: [],
-      selectedCustomer: null,
-      selectedShipper: null,
-      selectedEmployee: null,
-      selectedOrder: null,
-      selectedProduct: null);
+        customers: [],
+        shippers: [],
+        employees: [],
+        products: [],
+        selectedCustomer: null,
+        selectedShipper: null,
+        selectedEmployee: null,
+        selectedProduct: null,
+        orders: [],
+        selectedOrder: null,
+      );
 }

@@ -42,6 +42,7 @@ class CustomerDetailButton extends ConsumerWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Customer Id: ${customer?.customerid}'),
                   Text('Name: ${customer?.customername}'),
                   Text('Country: ${customer?.country}'),
                   Text('City: ${customer?.city}'),
@@ -86,6 +87,7 @@ class EmployeeDetailsButton extends StatelessWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Employee Id: ${employee?.employeeid}'),
                   Text('First Name: ${employee?.firstname}'),
                   Text('Last Name: ${employee?.lastname}'),
                   Text('Notes: ${employee?.notes}'),
@@ -129,8 +131,9 @@ class ShipperDetailsButton extends StatelessWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Shipper Id: ${shipper?.shipperid}'),
                   Text('Shipper Name: ${shipper?.shippername}'),
-                  Text('Shipper Phone: ${shipper?.phone}')
+                  Text('Shipper Phone: ${shipper?.phone}'),
                 ],
               ),
               actions: [
