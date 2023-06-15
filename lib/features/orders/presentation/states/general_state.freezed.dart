@@ -17,14 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GeneralState {
   List<OrderModel> get orders => throw _privateConstructorUsedError;
-  List<CustomerModel> get customers => throw _privateConstructorUsedError;
-  List<ShipperModel> get shippers => throw _privateConstructorUsedError;
-  List<EmployeeModel> get employees => throw _privateConstructorUsedError;
+  List<Customer> get customers => throw _privateConstructorUsedError;
+  List<Shipper> get shippers => throw _privateConstructorUsedError;
+  List<Employee> get employees => throw _privateConstructorUsedError;
   List<ProductModel> get products => throw _privateConstructorUsedError;
   OrderModel? get selectedOrder => throw _privateConstructorUsedError;
-  CustomerModel? get selectedCustomer => throw _privateConstructorUsedError;
-  ShipperModel? get selectedShipper => throw _privateConstructorUsedError;
-  EmployeeModel? get selectedEmployee => throw _privateConstructorUsedError;
+  Customer? get selectedCustomer => throw _privateConstructorUsedError;
+  Shipper? get selectedShipper => throw _privateConstructorUsedError;
+  Employee? get selectedEmployee => throw _privateConstructorUsedError;
   ProductModel? get selectedProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,20 +40,20 @@ abstract class $GeneralStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<OrderModel> orders,
-      List<CustomerModel> customers,
-      List<ShipperModel> shippers,
-      List<EmployeeModel> employees,
+      List<Customer> customers,
+      List<Shipper> shippers,
+      List<Employee> employees,
       List<ProductModel> products,
       OrderModel? selectedOrder,
-      CustomerModel? selectedCustomer,
-      ShipperModel? selectedShipper,
-      EmployeeModel? selectedEmployee,
+      Customer? selectedCustomer,
+      Shipper? selectedShipper,
+      Employee? selectedEmployee,
       ProductModel? selectedProduct});
 
   $OrderModelCopyWith<$Res>? get selectedOrder;
-  $CustomerModelCopyWith<$Res>? get selectedCustomer;
-  $ShipperModelCopyWith<$Res>? get selectedShipper;
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $CustomerCopyWith<$Res>? get selectedCustomer;
+  $ShipperCopyWith<$Res>? get selectedShipper;
+  $EmployeeCopyWith<$Res>? get selectedEmployee;
   $ProductModelCopyWith<$Res>? get selectedProduct;
 }
 
@@ -89,15 +89,15 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
       customers: null == customers
           ? _value.customers
           : customers // ignore: cast_nullable_to_non_nullable
-              as List<CustomerModel>,
+              as List<Customer>,
       shippers: null == shippers
           ? _value.shippers
           : shippers // ignore: cast_nullable_to_non_nullable
-              as List<ShipperModel>,
+              as List<Shipper>,
       employees: null == employees
           ? _value.employees
           : employees // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModel>,
+              as List<Employee>,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -109,15 +109,15 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
       selectedCustomer: freezed == selectedCustomer
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
-              as CustomerModel?,
+              as Customer?,
       selectedShipper: freezed == selectedShipper
           ? _value.selectedShipper
           : selectedShipper // ignore: cast_nullable_to_non_nullable
-              as ShipperModel?,
+              as Shipper?,
       selectedEmployee: freezed == selectedEmployee
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
-              as EmployeeModel?,
+              as Employee?,
       selectedProduct: freezed == selectedProduct
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
@@ -139,36 +139,36 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState>
 
   @override
   @pragma('vm:prefer-inline')
-  $CustomerModelCopyWith<$Res>? get selectedCustomer {
+  $CustomerCopyWith<$Res>? get selectedCustomer {
     if (_value.selectedCustomer == null) {
       return null;
     }
 
-    return $CustomerModelCopyWith<$Res>(_value.selectedCustomer!, (value) {
+    return $CustomerCopyWith<$Res>(_value.selectedCustomer!, (value) {
       return _then(_value.copyWith(selectedCustomer: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ShipperModelCopyWith<$Res>? get selectedShipper {
+  $ShipperCopyWith<$Res>? get selectedShipper {
     if (_value.selectedShipper == null) {
       return null;
     }
 
-    return $ShipperModelCopyWith<$Res>(_value.selectedShipper!, (value) {
+    return $ShipperCopyWith<$Res>(_value.selectedShipper!, (value) {
       return _then(_value.copyWith(selectedShipper: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee {
+  $EmployeeCopyWith<$Res>? get selectedEmployee {
     if (_value.selectedEmployee == null) {
       return null;
     }
 
-    return $EmployeeModelCopyWith<$Res>(_value.selectedEmployee!, (value) {
+    return $EmployeeCopyWith<$Res>(_value.selectedEmployee!, (value) {
       return _then(_value.copyWith(selectedEmployee: value) as $Val);
     });
   }
@@ -196,24 +196,24 @@ abstract class _$$_GeneralStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<OrderModel> orders,
-      List<CustomerModel> customers,
-      List<ShipperModel> shippers,
-      List<EmployeeModel> employees,
+      List<Customer> customers,
+      List<Shipper> shippers,
+      List<Employee> employees,
       List<ProductModel> products,
       OrderModel? selectedOrder,
-      CustomerModel? selectedCustomer,
-      ShipperModel? selectedShipper,
-      EmployeeModel? selectedEmployee,
+      Customer? selectedCustomer,
+      Shipper? selectedShipper,
+      Employee? selectedEmployee,
       ProductModel? selectedProduct});
 
   @override
   $OrderModelCopyWith<$Res>? get selectedOrder;
   @override
-  $CustomerModelCopyWith<$Res>? get selectedCustomer;
+  $CustomerCopyWith<$Res>? get selectedCustomer;
   @override
-  $ShipperModelCopyWith<$Res>? get selectedShipper;
+  $ShipperCopyWith<$Res>? get selectedShipper;
   @override
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $EmployeeCopyWith<$Res>? get selectedEmployee;
   @override
   $ProductModelCopyWith<$Res>? get selectedProduct;
 }
@@ -248,15 +248,15 @@ class __$$_GeneralStateCopyWithImpl<$Res>
       customers: null == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
-              as List<CustomerModel>,
+              as List<Customer>,
       shippers: null == shippers
           ? _value._shippers
           : shippers // ignore: cast_nullable_to_non_nullable
-              as List<ShipperModel>,
+              as List<Shipper>,
       employees: null == employees
           ? _value._employees
           : employees // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModel>,
+              as List<Employee>,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -268,15 +268,15 @@ class __$$_GeneralStateCopyWithImpl<$Res>
       selectedCustomer: freezed == selectedCustomer
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
-              as CustomerModel?,
+              as Customer?,
       selectedShipper: freezed == selectedShipper
           ? _value.selectedShipper
           : selectedShipper // ignore: cast_nullable_to_non_nullable
-              as ShipperModel?,
+              as Shipper?,
       selectedEmployee: freezed == selectedEmployee
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
-              as EmployeeModel?,
+              as Employee?,
       selectedProduct: freezed == selectedProduct
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
@@ -290,9 +290,9 @@ class __$$_GeneralStateCopyWithImpl<$Res>
 class _$_GeneralState implements _GeneralState {
   _$_GeneralState(
       {required final List<OrderModel> orders,
-      required final List<CustomerModel> customers,
-      required final List<ShipperModel> shippers,
-      required final List<EmployeeModel> employees,
+      required final List<Customer> customers,
+      required final List<Shipper> shippers,
+      required final List<Employee> employees,
       required final List<ProductModel> products,
       required this.selectedOrder,
       required this.selectedCustomer,
@@ -313,25 +313,25 @@ class _$_GeneralState implements _GeneralState {
     return EqualUnmodifiableListView(_orders);
   }
 
-  final List<CustomerModel> _customers;
+  final List<Customer> _customers;
   @override
-  List<CustomerModel> get customers {
+  List<Customer> get customers {
     if (_customers is EqualUnmodifiableListView) return _customers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_customers);
   }
 
-  final List<ShipperModel> _shippers;
+  final List<Shipper> _shippers;
   @override
-  List<ShipperModel> get shippers {
+  List<Shipper> get shippers {
     if (_shippers is EqualUnmodifiableListView) return _shippers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_shippers);
   }
 
-  final List<EmployeeModel> _employees;
+  final List<Employee> _employees;
   @override
-  List<EmployeeModel> get employees {
+  List<Employee> get employees {
     if (_employees is EqualUnmodifiableListView) return _employees;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_employees);
@@ -348,11 +348,11 @@ class _$_GeneralState implements _GeneralState {
   @override
   final OrderModel? selectedOrder;
   @override
-  final CustomerModel? selectedCustomer;
+  final Customer? selectedCustomer;
   @override
-  final ShipperModel? selectedShipper;
+  final Shipper? selectedShipper;
   @override
-  final EmployeeModel? selectedEmployee;
+  final Employee? selectedEmployee;
   @override
   final ProductModel? selectedProduct;
 
@@ -409,34 +409,34 @@ class _$_GeneralState implements _GeneralState {
 abstract class _GeneralState implements GeneralState {
   factory _GeneralState(
       {required final List<OrderModel> orders,
-      required final List<CustomerModel> customers,
-      required final List<ShipperModel> shippers,
-      required final List<EmployeeModel> employees,
+      required final List<Customer> customers,
+      required final List<Shipper> shippers,
+      required final List<Employee> employees,
       required final List<ProductModel> products,
       required final OrderModel? selectedOrder,
-      required final CustomerModel? selectedCustomer,
-      required final ShipperModel? selectedShipper,
-      required final EmployeeModel? selectedEmployee,
+      required final Customer? selectedCustomer,
+      required final Shipper? selectedShipper,
+      required final Employee? selectedEmployee,
       required final ProductModel? selectedProduct}) = _$_GeneralState;
 
   @override
   List<OrderModel> get orders;
   @override
-  List<CustomerModel> get customers;
+  List<Customer> get customers;
   @override
-  List<ShipperModel> get shippers;
+  List<Shipper> get shippers;
   @override
-  List<EmployeeModel> get employees;
+  List<Employee> get employees;
   @override
   List<ProductModel> get products;
   @override
   OrderModel? get selectedOrder;
   @override
-  CustomerModel? get selectedCustomer;
+  Customer? get selectedCustomer;
   @override
-  ShipperModel? get selectedShipper;
+  Shipper? get selectedShipper;
   @override
-  EmployeeModel? get selectedEmployee;
+  Employee? get selectedEmployee;
   @override
   ProductModel? get selectedProduct;
   @override

@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:deneme/features/orders/domain/models/customer_model/customer_model.dart';
 import 'package:deneme/product/routes/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/buttons.dart';
-import '../../domain/models/employee_model/employee_model.dart';
-import '../../domain/models/shipper_model/shipper_model.dart';
+import '../../domain/models/customer.dart';
+import '../../domain/models/employee.dart';
+import '../../domain/models/shipper.dart';
 import '../provider/order_mutate_provider.dart';
 
 @RoutePage()
@@ -46,28 +46,36 @@ class AddView extends ConsumerWidget {
                       //     ),
                       //   ),
                       // ),
-                      const Padding(padding: EdgeInsets.only(top: 180)),
-                      DropdownMenu<CustomerModel>(
+                      const Padding(
+                        padding: EdgeInsets.only(top: 180),
+                      ),
+                      DropdownMenu<Customer>(
                         items: state.customers,
                         text: "Customer Name",
                         onChanged: (item) {
-                          provider.selectCustomer(item ?? CustomerModel());
+                          provider.selectCustomer(
+                            item ?? Customer(),
+                          );
                         },
                         value: state.selectedCustomer,
                       ),
-                      DropdownMenu<EmployeeModel>(
+                      DropdownMenu<Employee>(
                         items: state.employees,
                         text: "Employee Name",
                         onChanged: (item) {
-                          provider.selectEmployee(item ?? EmployeeModel());
+                          provider.selectEmployee(
+                            item ?? Employee(),
+                          );
                         },
                         value: state.selectedEmployee,
                       ),
-                      DropdownMenu<ShipperModel>(
+                      DropdownMenu<Shipper>(
                         items: state.shippers,
                         text: "Shipper Name",
                         onChanged: (item) {
-                          provider.selectShipper(item ?? ShipperModel());
+                          provider.selectShipper(
+                            item ?? Shipper(),
+                          );
                         },
                         value: state.selectedShipper,
                       ),
@@ -85,7 +93,9 @@ class AddView extends ConsumerWidget {
                                 .read(generalProvider.notifier)
                                 .insertOrder();
                             // ignore: use_build_context_synchronously
-                            context.router.popAndPush(const OrderRoute());
+                            context.router.push(
+                              const OrderRoute(),
+                            );
                           },
                           text: "Ekle")
                     ],

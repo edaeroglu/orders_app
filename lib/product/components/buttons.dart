@@ -18,7 +18,13 @@ class CrudButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: Text(text));
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.red[200],
+      ),
+      child: Text(text),
+    );
   }
 }
 
@@ -33,37 +39,48 @@ class CustomerDetailButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('Customer Details'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Customer Id: ${customer?.customerid}'),
-                  Text('Name: ${customer?.customername}'),
-                  Text('Country: ${customer?.country}'),
-                  Text('City: ${customer?.city}'),
-                  Text('Address: ${customer?.address}'),
-                  Text('Contact Name: ${customer?.contactname}')
-                ],
-              ),
-              actions: [
-                TextButton(
-                  child: const Text('Close'),
-                  onPressed: () {
-                    context.popRoute();
-                  },
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text(
+                  'Customer Details',
+                  style: TextStyle(color: Colors.purple[200]),
                 ),
-              ],
-            );
-          },
-        );
-      },
-      child: const Text("Customer Details"),
-    );
+                content: SizedBox(
+                  height: 270,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Customer Id: ${customer?.customerid}'),
+                      Text('Name: ${customer?.customername}'),
+                      Text('Country: ${customer?.country}'),
+                      Text('City: ${customer?.city}'),
+                      Text('Address: ${customer?.address}'),
+                      Text('Contact Name: ${customer?.contactname}')
+                    ],
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    child: Text(
+                      'Close',
+                      style: TextStyle(color: Colors.purple[200]),
+                    ),
+                    onPressed: () {
+                      context.popRoute();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.purple[200],
+        ),
+        child: const Text("Customer Details"));
   }
 }
 
@@ -83,20 +100,30 @@ class EmployeeDetailsButton extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Employee Details'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Employee Id: ${employee?.employeeid}'),
-                  Text('First Name: ${employee?.firstname}'),
-                  Text('Last Name: ${employee?.lastname}'),
-                  Text('Notes: ${employee?.notes}'),
-                  Text('Birth Date: ${employee?.birthdate}'),
-                ],
+              title: Text(
+                'Employee Details',
+                style: TextStyle(color: Colors.green[200]),
+              ),
+              content: SizedBox(
+                height: 270,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Employee Id: ${employee?.employeeid}'),
+                    Text('First Name: ${employee?.firstname}'),
+                    Text('Last Name: ${employee?.lastname}'),
+                    Text('Notes: ${employee?.notes}',
+                        maxLines: 9, overflow: TextOverflow.ellipsis),
+                    Text('Birth Date: ${employee?.birthdate}'),
+                  ],
+                ),
               ),
               actions: [
                 TextButton(
-                  child: const Text('Close'),
+                  child: Text(
+                    'Close',
+                    style: TextStyle(color: Colors.green[200]),
+                  ),
                   onPressed: () {
                     context.popRoute();
                   },
@@ -106,6 +133,9 @@ class EmployeeDetailsButton extends StatelessWidget {
           },
         );
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.green[200],
+      ),
       child: const Text("Employee Details"),
     );
   }
@@ -127,18 +157,27 @@ class ShipperDetailsButton extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Shipper Details'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Shipper Id: ${shipper?.shipperid}'),
-                  Text('Shipper Name: ${shipper?.shippername}'),
-                  Text('Shipper Phone: ${shipper?.phone}'),
-                ],
+              title: Text(
+                'Shipper Details',
+                style: TextStyle(color: Colors.orange[200]),
+              ),
+              content: SizedBox(
+                height: 270,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Shipper Id: ${shipper?.shipperid}'),
+                    Text('Shipper Name: ${shipper?.shippername}'),
+                    Text('Shipper Phone: ${shipper?.phone}'),
+                  ],
+                ),
               ),
               actions: [
                 TextButton(
-                  child: const Text('Close'),
+                  child: Text(
+                    'Close',
+                    style: TextStyle(color: Colors.orange[200]),
+                  ),
                   onPressed: () {
                     context.popRoute();
                   },
@@ -148,6 +187,9 @@ class ShipperDetailsButton extends StatelessWidget {
           },
         );
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.orange[200],
+      ),
       child: const Text("Shipper Details"),
     );
   }
@@ -188,6 +230,9 @@ class ProductDetailsButton extends StatelessWidget {
           },
         );
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.pink[200],
+      ),
       child: const Text("Product Details"),
     );
   }

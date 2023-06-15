@@ -27,12 +27,16 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     // return AsyncData(state.value!.copyWith(orders: await service.getOrders())).value;
 
     return AsyncData(
-            OrderState.initial().copyWith(orders: await service.getOrders()))
-        .value; // o yüzden bu şekilde yazıldı
+      OrderState.initial().copyWith(
+        orders: await service.getOrders(),
+      ),
+    ).value; // o yüzden bu şekilde yazıldı
   }
 
   void selectOrder(OrderModel selectedOrder) {
-    state = AsyncData(state.value!.copyWith(selectedOrder: selectedOrder));
+    state = AsyncData(
+      state.value!.copyWith(selectedOrder: selectedOrder),
+    );
   }
 
   Future<void> deleteOrder() async {
@@ -50,10 +54,6 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
       state = AsyncData(
         state.value!.copyWith(
           selectedOrder: null,
-          // orders: [...state.value!.orders]..removeWhere(
-          //     (element) =>
-          //         element.orderid == state.value!.selectedOrder!.orderid!,
-          //   ),
         ),
       );
     }
@@ -77,8 +77,23 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
   }
 
   void updateList(OrderModel newOrder) {
-    state = AsyncData(state.value!.copyWith(
-        orders: [...state.value!.orders]
-          ..firstWhere((element) => element.orderid == newOrder.orderid)));
+    state = AsyncData(
+      state.value!.copyWith(
+        orders: [...state.value!.orders].map((order) {
+          if (order.orderid == newOrder.orderid) {
+            return order.copyWith(
+              customerid: newOrder.customerid,
+              customer: newOrder.customer,
+              employee: newOrder.employee,
+              employeeid: newOrder.employeeid,
+              shipper: newOrder.shipper,
+              shipperid: newOrder.shipperid,
+            );
+          } else {
+            return order;
+          }
+        }).toList(),
+      ),
+    );
   }
 }

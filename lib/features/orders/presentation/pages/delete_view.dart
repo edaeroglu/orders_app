@@ -34,12 +34,19 @@ class DeleteView extends ConsumerWidget {
                             ),
                             value: state.selectedOrder,
                             items: state.orders
-                                .map((e) => DropdownMenuItem(
+                                .map(
+                                  (e) => DropdownMenuItem(
                                     value: e,
-                                    child: Text(e.orderid.toString())))
+                                    child: Text(
+                                      e.orderid.toString(),
+                                    ),
+                                  ),
+                                )
                                 .toList(),
                             onChanged: (item) {
-                              provider.selectOrder(item ?? OrderModel());
+                              provider.selectOrder(
+                                item ?? OrderModel(),
+                              );
                             },
                             menuItemStyleData: const MenuItemStyleData(
                               height: 40,
@@ -52,21 +59,27 @@ class DeleteView extends ConsumerWidget {
                         ),
                         const SizedBox(height: 40),
                         CrudButton(
-                          text: "Sil",
                           onPressed: () async {
                             await ref
                                 .read(orderProvider.notifier)
                                 .deleteOrder();
                             // ignore: use_build_context_synchronously
-                            context.router.popAndPush(const OrderRoute());
+                            context.router.push(
+                              const OrderRoute(),
+                            );
                           },
+                          text: "Sil",
                         ),
                       ]),
                     ),
                   );
                 },
-                error: (error, stackTrace) => Text(error.toString()),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (error, stackTrace) => Text(
+                  error.toString(),
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
               )),
     );
   }

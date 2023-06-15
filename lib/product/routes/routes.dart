@@ -3,7 +3,6 @@ import '../../features/orders/presentation/pages/customer_view.dart';
 import '../../features/orders/presentation/pages/delete_view.dart';
 import '../../features/orders/presentation/pages/update_view.dart';
 import '../components/bottom_nav_bar.dart';
-import '../../features/orders/presentation/pages/order_detail_view.dart';
 import '../../features/orders/presentation/pages/order_view.dart';
 import '../../features/orders/presentation/pages/add_view.dart';
 
@@ -19,15 +18,11 @@ class AppRouter extends _$AppRouter {
             initial: true,
           ),
           AutoRoute(page: OptionsRoute.page),
-          AutoRoute(page: OrderDetailRoute.page),
         ]),
         AutoRoute(
           page: AddRoute.page,
         ),
         AutoRoute(page: DeleteRoute.page),
-        AutoRoute(page: UpdateRoute.page)
-
-        // AutoRoute(page: OrderRoute.page, initial: true),
-        // AutoRoute(page: UpdateRoute.page),
+        AutoRoute(page: UpdateRoute.page),
       ];
 }

@@ -148,13 +148,14 @@ class __$$_EmployeeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Employee implements _Employee {
+class _$_Employee extends _Employee {
   _$_Employee(
       {this.notes,
       this.lastname,
       this.firstname,
       this.birthdate,
-      this.employeeid});
+      this.employeeid})
+      : super._();
 
   factory _$_Employee.fromJson(Map<String, dynamic> json) =>
       _$$_EmployeeFromJson(json);
@@ -169,11 +170,6 @@ class _$_Employee implements _Employee {
   final String? birthdate;
   @override
   final int? employeeid;
-
-  @override
-  String toString() {
-    return 'Employee(notes: $notes, lastname: $lastname, firstname: $firstname, birthdate: $birthdate, employeeid: $employeeid)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -210,13 +206,14 @@ class _$_Employee implements _Employee {
   }
 }
 
-abstract class _Employee implements Employee {
+abstract class _Employee extends Employee {
   factory _Employee(
       {final String? notes,
       final String? lastname,
       final String? firstname,
       final String? birthdate,
       final int? employeeid}) = _$_Employee;
+  _Employee._() : super._();
 
   factory _Employee.fromJson(Map<String, dynamic> json) = _$_Employee.fromJson;
 

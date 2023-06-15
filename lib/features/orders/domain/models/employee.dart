@@ -3,8 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'employee.freezed.dart';
 part 'employee.g.dart';
 
-@freezed
+@Freezed(toStringOverride: false)
 class Employee with _$Employee {
+  Employee._();
   factory Employee({
     String? notes,
     String? lastname,
@@ -15,4 +16,10 @@ class Employee with _$Employee {
 
   factory Employee.fromJson(Map<String, dynamic> json) =>
       _$EmployeeFromJson(json);
+
+  String toString() {
+    return firstname.toString();
+  }
+
+  int get id => employeeid ?? 0;
 }

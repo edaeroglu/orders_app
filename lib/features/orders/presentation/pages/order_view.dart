@@ -25,33 +25,45 @@ class OrderView extends ConsumerWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: const Text(' Details'),
-                              content: Column(
-                                children: [
-                                  CustomerDetailButton(
-                                    customer: state.orders[index].customer,
-                                  ),
-                                  EmployeeDetailsButton(
-                                    employee: state.orders[index].employee,
-                                  ),
-                                  ShipperDetailsButton(
-                                    shipper: state.orders[index].shipper,
-                                  ),
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        context.pushRoute(const UpdateRoute());
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.blue[200]),
-                                      child: const Text("Güncelle")),
-                                ],
+                              title: const Text('Order Details'),
+                              content: SizedBox(
+                                height: 270,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CustomerDetailButton(
+                                      customer: state.orders[index].customer,
+                                    ),
+                                    EmployeeDetailsButton(
+                                      employee: state.orders[index].employee,
+                                    ),
+                                    ShipperDetailsButton(
+                                      shipper: state.orders[index].shipper,
+                                    ),
+                                    const SizedBox(height: 20),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          context.router.push(UpdateRoute(
+                                              orderId:
+                                                  state.orders[index].orderid ??
+                                                      0));
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.pink[200],
+                                        ),
+                                        child: const Text("Güncelle")),
+                                  ],
+                                ),
                               ),
                               actions: [
                                 TextButton(
-                                  child: const Text('Close'),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.black,
+                                  ),
                                   onPressed: () {
                                     context.popRoute();
                                   },
+                                  child: const Text('Close'),
                                 ),
                               ],
                             );

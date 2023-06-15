@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../domain/models/employee_model/employee_model.dart';
+import '../../domain/models/employee.dart';
 
 part 'employee_state.freezed.dart';
 
 @freezed
 class EmployeeState with _$EmployeeState {
   factory EmployeeState(
-      {required List<EmployeeModel> employees,
-      required EmployeeModel? selectedEmployee}) = _EmployeeState;
+      {required List<Employee> employees,
+      required Employee? selectedEmployee}) = _EmployeeState;
 
   factory EmployeeState.initial() =>
       EmployeeState(employees: [], selectedEmployee: null);

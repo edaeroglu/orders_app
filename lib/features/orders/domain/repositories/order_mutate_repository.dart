@@ -1,14 +1,14 @@
-import 'package:deneme/features/orders/domain/models/employee_model/employee_model.dart';
 import 'package:deneme/features/orders/domain/models/product_model/product_model.dart';
-import 'package:deneme/features/orders/domain/models/shipper_model/shipper_model.dart';
-import '../models/customer_model/customer_model.dart';
+import '../models/customer.dart';
+import '../models/employee.dart';
 import '../models/order_model.dart';
+import '../models/shipper.dart';
 
 abstract class GeneralRepository {
-  Future<List<CustomerModel>> getCustomers();
-  Future<List<EmployeeModel>> getEmployees();
+  Future<List<Customer>> getCustomers();
+  Future<List<Employee>> getEmployees();
   Future<List<ProductModel>> getProducts();
-  Future<List<ShipperModel>> getShippers();
+  Future<List<Shipper>> getShippers();
 
   Future<OrderModel> insertOrder({
     required int customerId,
@@ -18,10 +18,10 @@ abstract class GeneralRepository {
   });
 
   Future<OrderModel> updateOrder({
+    required int orderId,
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
   });
 }
 

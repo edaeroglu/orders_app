@@ -50,14 +50,40 @@ mutation MyMutation3($order_id: Int = 10570) {
 ''';
 
   static const updateOrder = r'''
-mutation MyMutation($customerid: Int = 90, $employeeid: Int = 5, $shipperid: Int = 3) {
-  update_orders(where: {customerid: {_eq: $customerid}, employeeid: {_eq: $employeeid}, shipperid: {_eq: $shipperid}}) {
-    returning {
+mutation MyMutation($orderid: Int = 10586, $customerid: Int = 10, $employeeid: Int = 10, $shipperid: Int = 1) {
+  update_orders(where: {orderid: {_eq: $orderid}}, _set: {customerid: $customerid, employeeid: $employeeid, shipperid: $shipperid}) {
+    returning{
       orderid
+      orderdate
       employeeid
       shipperid
       customerid
-    
+      customer {
+        address
+        city
+        contactname
+        country
+        customerid
+        customername
+      }
+      employee {
+        birthdate
+        employeeid
+        firstname
+        lastname
+        notes
+      }
+      shipper {
+        phone
+        shipperid
+        shippername
+      }
+      order_details {
+        orderid
+        orderdetailid
+        productid
+        quantity
+      }
     }
   }
 }

@@ -21,12 +21,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OptionsView(),
       );
     },
-    OrderDetailRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrderDetailView(),
-      );
-    },
     OrderRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -52,9 +46,10 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     UpdateRoute.name: (routeData) {
+      final args = routeData.argsAs<UpdateRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const UpdateView(),
+        child: UpdateView(orderId: args.orderId),
       );
     },
   };
@@ -70,20 +65,6 @@ class OptionsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OptionsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [OrderDetailView]
-class OrderDetailRoute extends PageRouteInfo<void> {
-  const OrderDetailRoute({List<PageRouteInfo>? children})
-      : super(
-          OrderDetailRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -146,14 +127,28 @@ class AddRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [UpdateView]
-class UpdateRoute extends PageRouteInfo<void> {
-  const UpdateRoute({List<PageRouteInfo>? children})
-      : super(
+class UpdateRoute extends PageRouteInfo<UpdateRouteArgs> {
+  UpdateRoute({
+    required int orderId,
+    List<PageRouteInfo>? children,
+  }) : super(
           UpdateRoute.name,
+          args: UpdateRouteArgs(orderId: orderId),
           initialChildren: children,
         );
 
   static const String name = 'UpdateRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<UpdateRouteArgs> page = PageInfo<UpdateRouteArgs>(name);
+}
+
+class UpdateRouteArgs {
+  const UpdateRouteArgs({required this.orderId});
+
+  final int orderId;
+
+  @override
+  String toString() {
+    return 'UpdateRouteArgs{orderId: $orderId}';
+  }
 }

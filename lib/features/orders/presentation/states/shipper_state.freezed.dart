@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ShipperState {
-  List<ShipperModel> get shippers => throw _privateConstructorUsedError;
-  ShipperModel? get selectedShipper => throw _privateConstructorUsedError;
+  List<Shipper> get shippers => throw _privateConstructorUsedError;
+  Shipper? get selectedShipper => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShipperStateCopyWith<ShipperState> get copyWith =>
@@ -30,9 +30,9 @@ abstract class $ShipperStateCopyWith<$Res> {
           ShipperState value, $Res Function(ShipperState) then) =
       _$ShipperStateCopyWithImpl<$Res, ShipperState>;
   @useResult
-  $Res call({List<ShipperModel> shippers, ShipperModel? selectedShipper});
+  $Res call({List<Shipper> shippers, Shipper? selectedShipper});
 
-  $ShipperModelCopyWith<$Res>? get selectedShipper;
+  $ShipperCopyWith<$Res>? get selectedShipper;
 }
 
 /// @nodoc
@@ -55,22 +55,22 @@ class _$ShipperStateCopyWithImpl<$Res, $Val extends ShipperState>
       shippers: null == shippers
           ? _value.shippers
           : shippers // ignore: cast_nullable_to_non_nullable
-              as List<ShipperModel>,
+              as List<Shipper>,
       selectedShipper: freezed == selectedShipper
           ? _value.selectedShipper
           : selectedShipper // ignore: cast_nullable_to_non_nullable
-              as ShipperModel?,
+              as Shipper?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ShipperModelCopyWith<$Res>? get selectedShipper {
+  $ShipperCopyWith<$Res>? get selectedShipper {
     if (_value.selectedShipper == null) {
       return null;
     }
 
-    return $ShipperModelCopyWith<$Res>(_value.selectedShipper!, (value) {
+    return $ShipperCopyWith<$Res>(_value.selectedShipper!, (value) {
       return _then(_value.copyWith(selectedShipper: value) as $Val);
     });
   }
@@ -84,10 +84,10 @@ abstract class _$$_ShipperStateCopyWith<$Res>
       __$$_ShipperStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ShipperModel> shippers, ShipperModel? selectedShipper});
+  $Res call({List<Shipper> shippers, Shipper? selectedShipper});
 
   @override
-  $ShipperModelCopyWith<$Res>? get selectedShipper;
+  $ShipperCopyWith<$Res>? get selectedShipper;
 }
 
 /// @nodoc
@@ -108,11 +108,11 @@ class __$$_ShipperStateCopyWithImpl<$Res>
       shippers: null == shippers
           ? _value._shippers
           : shippers // ignore: cast_nullable_to_non_nullable
-              as List<ShipperModel>,
+              as List<Shipper>,
       selectedShipper: freezed == selectedShipper
           ? _value.selectedShipper
           : selectedShipper // ignore: cast_nullable_to_non_nullable
-              as ShipperModel?,
+              as Shipper?,
     ));
   }
 }
@@ -121,20 +121,19 @@ class __$$_ShipperStateCopyWithImpl<$Res>
 
 class _$_ShipperState implements _ShipperState {
   _$_ShipperState(
-      {required final List<ShipperModel> shippers,
-      required this.selectedShipper})
+      {required final List<Shipper> shippers, required this.selectedShipper})
       : _shippers = shippers;
 
-  final List<ShipperModel> _shippers;
+  final List<Shipper> _shippers;
   @override
-  List<ShipperModel> get shippers {
+  List<Shipper> get shippers {
     if (_shippers is EqualUnmodifiableListView) return _shippers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_shippers);
   }
 
   @override
-  final ShipperModel? selectedShipper;
+  final Shipper? selectedShipper;
 
   @override
   String toString() {
@@ -164,13 +163,13 @@ class _$_ShipperState implements _ShipperState {
 
 abstract class _ShipperState implements ShipperState {
   factory _ShipperState(
-      {required final List<ShipperModel> shippers,
-      required final ShipperModel? selectedShipper}) = _$_ShipperState;
+      {required final List<Shipper> shippers,
+      required final Shipper? selectedShipper}) = _$_ShipperState;
 
   @override
-  List<ShipperModel> get shippers;
+  List<Shipper> get shippers;
   @override
-  ShipperModel? get selectedShipper;
+  Shipper? get selectedShipper;
   @override
   @JsonKey(ignore: true)
   _$$_ShipperStateCopyWith<_$_ShipperState> get copyWith =>

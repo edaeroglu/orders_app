@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EmployeeState {
-  List<EmployeeModel> get employees => throw _privateConstructorUsedError;
-  EmployeeModel? get selectedEmployee => throw _privateConstructorUsedError;
+  List<Employee> get employees => throw _privateConstructorUsedError;
+  Employee? get selectedEmployee => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EmployeeStateCopyWith<EmployeeState> get copyWith =>
@@ -30,9 +30,9 @@ abstract class $EmployeeStateCopyWith<$Res> {
           EmployeeState value, $Res Function(EmployeeState) then) =
       _$EmployeeStateCopyWithImpl<$Res, EmployeeState>;
   @useResult
-  $Res call({List<EmployeeModel> employees, EmployeeModel? selectedEmployee});
+  $Res call({List<Employee> employees, Employee? selectedEmployee});
 
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $EmployeeCopyWith<$Res>? get selectedEmployee;
 }
 
 /// @nodoc
@@ -55,22 +55,22 @@ class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
       employees: null == employees
           ? _value.employees
           : employees // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModel>,
+              as List<Employee>,
       selectedEmployee: freezed == selectedEmployee
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
-              as EmployeeModel?,
+              as Employee?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee {
+  $EmployeeCopyWith<$Res>? get selectedEmployee {
     if (_value.selectedEmployee == null) {
       return null;
     }
 
-    return $EmployeeModelCopyWith<$Res>(_value.selectedEmployee!, (value) {
+    return $EmployeeCopyWith<$Res>(_value.selectedEmployee!, (value) {
       return _then(_value.copyWith(selectedEmployee: value) as $Val);
     });
   }
@@ -84,10 +84,10 @@ abstract class _$$_EmployeeStateCopyWith<$Res>
       __$$_EmployeeStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<EmployeeModel> employees, EmployeeModel? selectedEmployee});
+  $Res call({List<Employee> employees, Employee? selectedEmployee});
 
   @override
-  $EmployeeModelCopyWith<$Res>? get selectedEmployee;
+  $EmployeeCopyWith<$Res>? get selectedEmployee;
 }
 
 /// @nodoc
@@ -108,11 +108,11 @@ class __$$_EmployeeStateCopyWithImpl<$Res>
       employees: null == employees
           ? _value._employees
           : employees // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModel>,
+              as List<Employee>,
       selectedEmployee: freezed == selectedEmployee
           ? _value.selectedEmployee
           : selectedEmployee // ignore: cast_nullable_to_non_nullable
-              as EmployeeModel?,
+              as Employee?,
     ));
   }
 }
@@ -121,20 +121,19 @@ class __$$_EmployeeStateCopyWithImpl<$Res>
 
 class _$_EmployeeState implements _EmployeeState {
   _$_EmployeeState(
-      {required final List<EmployeeModel> employees,
-      required this.selectedEmployee})
+      {required final List<Employee> employees, required this.selectedEmployee})
       : _employees = employees;
 
-  final List<EmployeeModel> _employees;
+  final List<Employee> _employees;
   @override
-  List<EmployeeModel> get employees {
+  List<Employee> get employees {
     if (_employees is EqualUnmodifiableListView) return _employees;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_employees);
   }
 
   @override
-  final EmployeeModel? selectedEmployee;
+  final Employee? selectedEmployee;
 
   @override
   String toString() {
@@ -165,13 +164,13 @@ class _$_EmployeeState implements _EmployeeState {
 
 abstract class _EmployeeState implements EmployeeState {
   factory _EmployeeState(
-      {required final List<EmployeeModel> employees,
-      required final EmployeeModel? selectedEmployee}) = _$_EmployeeState;
+      {required final List<Employee> employees,
+      required final Employee? selectedEmployee}) = _$_EmployeeState;
 
   @override
-  List<EmployeeModel> get employees;
+  List<Employee> get employees;
   @override
-  EmployeeModel? get selectedEmployee;
+  Employee? get selectedEmployee;
   @override
   @JsonKey(ignore: true)
   _$$_EmployeeStateCopyWith<_$_EmployeeState> get copyWith =>

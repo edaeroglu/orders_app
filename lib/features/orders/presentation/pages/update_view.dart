@@ -1,80 +1,88 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:deneme/features/orders/domain/models/customer_model/customer_model.dart';
+import 'package:deneme/features/orders/domain/models/customer.dart';
 import 'package:deneme/features/orders/presentation/provider/order_mutate_provider.dart';
 import 'package:deneme/product/components/buttons.dart';
 import 'package:deneme/product/routes/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../domain/models/employee_model/employee_model.dart';
-import '../../domain/models/shipper_model/shipper_model.dart';
+import '../../domain/models/employee.dart';
+import '../../domain/models/shipper.dart';
 
 @RoutePage()
 class UpdateView extends ConsumerWidget {
-  const UpdateView({super.key});
+  final int orderId;
+  const UpdateView({required this.orderId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = ref.read<GeneralNotifier>(generalProvider.notifier);
-    return SafeArea(
-      child: Scaffold(
-          body: SingleChildScrollView(
-        child: ref.watch(generalProvider).when(
-              data: (state) {
-                return Center(
-                  child: Column(
-                    children: [
-                      const Padding(padding: EdgeInsets.only(top: 140)),
-                      DropdownMenu<CustomerModel>(
-                        items: state.customers,
-                        text: "Customer Name",
-                        onChanged: (item) {
-                          provider.selectCustomer(item ?? CustomerModel());
-                        },
-                        value: state.selectedCustomer,
-                      ),
-                      DropdownMenu<EmployeeModel>(
-                        items: state.employees,
-                        text: "Employee Name",
-                        onChanged: (item) {
-                          provider.selectEmployee(item ?? EmployeeModel());
-                        },
-                        value: state.selectedEmployee,
-                      ),
-                      DropdownMenu<ShipperModel>(
-                        items: state.shippers,
-                        text: "Shipper Name",
-                        onChanged: (item) {
-                          provider.selectShipper(item ?? ShipperModel());
-                        },
-                        value: state.selectedShipper,
-                      ),
-                      // const UpdateTextField(text: "Customer Name"),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      CrudButton(
-                        onPressed: () async {
-                          await ref
-                              .read(generalProvider.notifier)
-                              .updateOrder();
-                          // ignore: use_build_context_synchronously
-                          context.router.popAndPush(const OrderRoute());
-                        },
-                        text: "Güncelle",
-                      )
-                    ],
-                  ),
-                );
-              },
-              error: (error, stackTrace) => Text(error.toString()),
-              loading: () => const Center(
-                  child: CircularProgressIndicator(
-                color: Colors.blue,
-              )),
+    return Scaffold(
+      body: ref.watch(generalProvider).when(
+            data: (state) {
+              return Center(
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 140),
+                    ),
+                    DropdownMenu<Customer>(
+                      items: state.customers,
+                      text: "Customer Name",
+                      onChanged: (item) {
+                        provider.selectCustomer(
+                          item ?? Customer(),
+                        );
+                      },
+                      value: state.selectedCustomer,
+                    ),
+                    DropdownMenu<Employee>(
+                      items: state.employees,
+                      text: "Employee Name",
+                      onChanged: (item) {
+                        provider.selectEmployee(
+                          item ?? Employee(),
+                        );
+                      },
+                      value: state.selectedEmployee,
+                    ),
+                    DropdownMenu<Shipper>(
+                      items: state.shippers,
+                      text: "Shipper Name",
+                      onChanged: (item) {
+                        provider.selectShipper(
+                          item ?? Shipper(),
+                        );
+                      },
+                      value: state.selectedShipper,
+                    ),
+                    // const UpdateTextField(text: "Customer Name"),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    CrudButton(
+                      onPressed: () async {
+                        await ref
+                            .read(generalProvider.notifier)
+                            .updateOrder(id: orderId);
+                        // ignore: use_build_context_synchronously
+                        await context.router.push(const OrderRoute());
+                      },
+                      text: "Güncelle",
+                    ),
+                  ],
+                ),
+              );
+            },
+            error: (error, stackTrace) => Text(
+              error.toString(),
             ),
-      )),
+            loading: () => const Center(
+              child: CircularProgressIndicator(
+                color: Colors.blue,
+              ),
+            ),
+          ),
     );
   }
 }
@@ -108,15 +116,17 @@ class DropdownMenu<T> extends ConsumerWidget {
             ),
           ),
           items: items
-              .map((item) => DropdownMenuItem<T>(
-                    value: item,
-                    child: Text(
-                      item.toString(),
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
+              .map(
+                (item) => DropdownMenuItem<T>(
+                  value: item,
+                  child: Text(
+                    item.toString(),
+                    style: const TextStyle(
+                      fontSize: 14,
                     ),
-                  ))
+                  ),
+                ),
+              )
               .toList(),
           onChanged: onChanged,
           buttonStyleData: const ButtonStyleData(

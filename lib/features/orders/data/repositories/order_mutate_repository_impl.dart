@@ -1,12 +1,12 @@
 import 'package:deneme/core/graphql_client/graphql_client.dart';
-import 'package:deneme/features/orders/domain/models/customer_model/customer_model.dart';
-import 'package:deneme/features/orders/domain/models/shipper_model/shipper_model.dart';
 import 'package:deneme/product/graphql_queries/mutations.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../product/graphql_queries/queries.dart';
-import '../../domain/models/employee_model/employee_model.dart';
+import '../../domain/models/customer.dart';
+import '../../domain/models/employee.dart';
 import '../../domain/models/order_model.dart';
 import '../../domain/models/product_model/product_model.dart';
+import '../../domain/models/shipper.dart';
 import '../../domain/repositories/order_mutate_repository.dart';
 
 @Injectable(as: GeneralRepository)
@@ -22,47 +22,55 @@ class GeneralRepositoryImpl implements GeneralRepository {
     required int shipperId,
     // required int productId,
   }) async {
-    var response =
-        await graphQLService.mutate(Mutations.insertOrder, variables: {
-      "customerid": customerId,
-      "employeeid": employeeId,
-      "shipperid": shipperId,
-      // "productid": productId,
-    });
+    var response = await graphQLService.mutate(
+      Mutations.insertOrder,
+      variables: {
+        "customerid": customerId,
+        "employeeid": employeeId,
+        "shipperid": shipperId,
+        // "productid": productId,
+      },
+    );
     return OrderModel.fromJson(response['insert_orders_one']);
   }
 
   @override
   Future<OrderModel> updateOrder({
+    required int orderId,
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
   }) async {
-    var response =
-        await graphQLService.mutate(Mutations.updateOrder, variables: {
-      "customerid": customerId,
-      "employeeid": employeeId,
-      "shipperid": shipperId,
-      // "productid": productId,
-    });
+    var response = await graphQLService.mutate(
+      Mutations.updateOrder,
+      variables: {
+        "orderid": orderId,
+        "customerid": customerId,
+        "employeeid": employeeId,
+        "shipperid": shipperId,
+      },
+    );
 
-    return OrderModel.fromJson(response['update_orders']);
+    return OrderModel.fromJson(response['update_orders']['returning'][0]);
   }
 
   @override
-  Future<List<CustomerModel>> getCustomers() async {
+  Future<List<Customer>> getCustomers() async {
     var response = await graphQLService.query(Queries.getCustomers);
     return response['customers']
-        .map<CustomerModel>((e) => CustomerModel.fromJson(e))
+        .map<Customer>(
+          (e) => Customer.fromJson(e),
+        )
         .toList();
   }
 
   @override
-  Future<List<EmployeeModel>> getEmployees() async {
+  Future<List<Employee>> getEmployees() async {
     var response = await graphQLService.query(Queries.getEmployees);
     return response['employees']
-        .map<EmployeeModel>((e) => EmployeeModel.fromJson(e))
+        .map<Employee>(
+          (e) => Employee.fromJson(e),
+        )
         .toList();
   }
 
@@ -70,18 +78,26 @@ class GeneralRepositoryImpl implements GeneralRepository {
   Future<List<ProductModel>> getProducts() async {
     var response = await graphQLService.query(Queries.getProducts);
     return response['products']
-        .map<ProductModel>((e) => ProductModel.fromJson(e))
+        .map<ProductModel>(
+          (e) => ProductModel.fromJson(e),
+        )
         .toList();
   }
 
   @override
-  Future<List<ShipperModel>> getShippers() async {
+  Future<List<Shipper>> getShippers() async {
     var response = await graphQLService.query(Queries.getShippers);
     return response['shippers']
-        .map<ShipperModel>((e) => ShipperModel.fromJson(e))
+        .map<Shipper>(
+          (e) => Shipper.fromJson(e),
+        )
         .toList();
   }
 }
+
+
+
+
 
 
 

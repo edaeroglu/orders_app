@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:deneme/features/orders/domain/models/customer_model/customer_model.dart';
-import 'package:deneme/features/orders/domain/models/employee_model/employee_model.dart';
 import 'package:deneme/features/orders/domain/models/order_model.dart';
 import 'package:deneme/features/orders/domain/models/product_model/product_model.dart';
-import 'package:deneme/features/orders/domain/models/shipper_model/shipper_model.dart';
 import 'package:deneme/features/orders/domain/repositories/order_mutate_repository.dart';
 import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:injectable/injectable.dart';
 import '../../../../product/injector/injector.dart';
+import '../../domain/models/customer.dart';
+import '../../domain/models/employee.dart';
+import '../../domain/models/shipper.dart';
 import '../states/general_state.dart';
 
 final bottomNavigationProvider = Provider<int>((ref) => 0);
@@ -32,9 +31,13 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
     service = getIt<GeneralRepository>();
     // shipperService = getIt<ShipperRepository>();
 
-    state = AsyncData(GeneralState.initial());
+    state = AsyncData(
+      GeneralState.initial(),
+    );
 
-    Future.wait([getCustomers(), getShippers(), getEmployees(), getProducts()]);
+    Future.wait(
+      [getCustomers(), getShippers(), getEmployees(), getProducts()],
+    );
 
     log(state.value!.customers.toString());
   }
@@ -42,44 +45,60 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
   Future<void> getCustomers() async {
     // state = AsyncData(CustomerState.initial());
     var a = await service.getCustomers();
-    state = AsyncData(state.value!.copyWith(customers: a));
+    state = AsyncData(
+      state.value!.copyWith(customers: a),
+    );
   }
 
   Future<void> getShippers() async {
     var a = await service.getShippers();
-    state = AsyncData(state.value!.copyWith(shippers: a));
+    state = AsyncData(
+      state.value!.copyWith(shippers: a),
+    );
   }
 
   Future<void> getEmployees() async {
     var a = await service.getEmployees();
-    state = AsyncData(state.value!.copyWith(employees: a));
+    state = AsyncData(
+      state.value!.copyWith(employees: a),
+    );
   }
 
   Future<void> getProducts() async {
     var a = await service.getProducts();
-    state = AsyncData(state.value!.copyWith(products: a));
+    state = AsyncData(
+      state.value!.copyWith(products: a),
+    );
   }
 
   void selectOrder(OrderModel selectedOrder) {
-    state = AsyncData(state.value!.copyWith(selectedOrder: selectedOrder));
+    state = AsyncData(
+      state.value!.copyWith(selectedOrder: selectedOrder),
+    );
   }
 
-  void selectCustomer(CustomerModel selectedCustomer) {
-    state =
-        AsyncData(state.value!.copyWith(selectedCustomer: selectedCustomer));
+  void selectCustomer(Customer selectedCustomer) {
+    state = AsyncData(
+      state.value!.copyWith(selectedCustomer: selectedCustomer),
+    );
   }
 
-  void selectShipper(ShipperModel selectedShipper) {
-    state = AsyncData(state.value!.copyWith(selectedShipper: selectedShipper));
+  void selectShipper(Shipper selectedShipper) {
+    state = AsyncData(
+      state.value!.copyWith(selectedShipper: selectedShipper),
+    );
   }
 
-  void selectEmployee(EmployeeModel selectedEmployee) {
-    state =
-        AsyncData(state.value!.copyWith(selectedEmployee: selectedEmployee));
+  void selectEmployee(Employee selectedEmployee) {
+    state = AsyncData(
+      state.value!.copyWith(selectedEmployee: selectedEmployee),
+    );
   }
 
   void selectProduct(ProductModel selectedProduct) {
-    state = AsyncData(state.value!.copyWith(selectedProduct: selectedProduct));
+    state = AsyncData(
+      state.value!.copyWith(selectedProduct: selectedProduct),
+    );
   }
 
   Future<void> insertOrder() async {
@@ -87,7 +106,6 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
       customerId: state.value!.selectedCustomer!.customerid!,
       employeeId: state.value!.selectedEmployee!.employeeid!,
       shipperId: state.value!.selectedShipper!.shipperid!,
-      // productId: state.value!.selectedProduct!.productid!,
     );
 
     log(response.toString());
@@ -96,25 +114,63 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
       ref.read(orderProvider.notifier).addList(response);
     }
 
-    // ref.read(orderProvider.notifier).state.value?.orders.add(response);
+    state = AsyncData(
+      state.value!.copyWith(
+          selectedCustomer: null,
+          selectedEmployee: null,
+          selectedShipper: null),
+    );
+
     // await ref.read(orderProvider.notifier).getOrder();
   }
 
-  Future<void> updateOrder() async {
+  Future<void> updateOrder({required int id}) async {
     OrderModel response = await service.updateOrder(
+      orderId: id,
       customerId: state.value!.selectedCustomer!.customerid!,
       employeeId: state.value!.selectedEmployee!.employeeid!,
       shipperId: state.value!.selectedShipper!.shipperid!,
-      // productId: state.value!.selectedProduct!.productid!,
     );
 
     log(response.toString());
 
     if (response.orderid != null) {
-      ref.read(orderProvider.notifier).updateList(response);
+      ref.read(orderProvider.notifier).updateList(OrderModel(
+            orderid: id,
+            customerid: state.value!.selectedCustomer!.customerid!,
+            customer: state.value!.selectedCustomer!,
+            employee: state.value!.selectedEmployee!,
+            shipper: state.value!.selectedShipper!,
+            employeeid: state.value!.selectedEmployee!.employeeid!,
+            shipperid: state.value!.selectedShipper!.shipperid!,
+          ));
     }
+
+    state = AsyncData(
+      state.value!.copyWith(
+          selectedCustomer: null,
+          selectedEmployee: null,
+          selectedShipper: null),
+    );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // class CustomerNotifier extends AutoDisposeAsyncNotifier<CustomerState> {
 //   late final CustomerRepository customerService;
@@ -247,24 +303,6 @@ class GeneralNotifier extends AutoDisposeAsyncNotifier<GeneralState> {
 
 //   void selectProduct(ProductModel selectedProduct) {
 //     state = AsyncData(state.value!.copyWith(selectedProduct: selectedProduct));
-//   }
-// }
-
-// class ShipperNotifier extends AutoDisposeAsyncNotifier<ShipperState> {
-//   late final ShipperRepository service;
-
-//   Future<ShipperState> build() {
-//     service = getIt<ShipperRepository>();
-//     return getShippers();
-//   }
-
-//   Future<ShipperState> getShippers() async {
-//     state = AsyncData(ShipperState.initial());
-//     return state.value!.copyWith(shippers: await service.getShippers());
-//   }
-
-//   void selectShipper(ShipperModel selectedShipper) {
-//     state = AsyncData(state.value!.copyWith(selectedShipper: selectedShipper));
 //   }
 // }
 

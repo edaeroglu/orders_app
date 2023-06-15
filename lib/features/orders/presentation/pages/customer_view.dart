@@ -29,24 +29,6 @@ class OptionsView extends ConsumerWidget {
                   context.pushRoute(const DeleteRoute());
                 },
               ),
-              CrudButton(
-                text: "Güncelle",
-                onPressed: () {
-                  context.pushRoute(const UpdateRoute());
-                },
-              ),
-              // CrudDropdownMenu(
-              //   text: "Order",
-              // ),
-              // CrudDropdownMenu(
-              //   text: "Customer",
-              // ),
-              // CrudDropdownMenu(
-              //   text: "Employee",
-              // ),
-              // CrudDropdownMenu(
-              //   text: "Shipper",
-              // )
             ],
           ),
         ),

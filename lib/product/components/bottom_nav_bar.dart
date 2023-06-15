@@ -19,6 +19,7 @@ class OrderWrapperView extends ConsumerWidget {
             onPressed: () {
               context.pushRoute(const AddRoute());
             },
+            backgroundColor: Colors.orange[200],
             child: const Icon(Icons.add),
           ),
           floatingActionButtonLocation:
@@ -27,7 +28,9 @@ class OrderWrapperView extends ConsumerWidget {
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(
+                  Icons.home,
+                ),
                 label: "home",
               ),
               BottomNavigationBarItem(icon: Icon(Icons.menu), label: "settings")
