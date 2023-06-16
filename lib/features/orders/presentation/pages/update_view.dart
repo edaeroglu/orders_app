@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/domain/models/customer.dart';
+import 'package:deneme/features/orders/presentation/pages/add_view.dart';
 import 'package:deneme/features/orders/presentation/provider/order_mutate_provider.dart';
 import 'package:deneme/product/components/buttons.dart';
 import 'package:deneme/product/routes/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../../product/components/alert_dialog.dart';
 import '../../domain/models/employee.dart';
 import '../../domain/models/shipper.dart';
 
@@ -66,9 +68,15 @@ class UpdateView extends ConsumerWidget {
                             .read(generalProvider.notifier)
                             .updateOrder(id: orderId);
                         // ignore: use_build_context_synchronously
-                        await context.router.push(const OrderRoute());
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const SuccessAlertDialog(
+                                text: "Update Successful");
+                          },
+                        );
                       },
-                      text: "Güncelle",
+                      text: "Update",
                     ),
                   ],
                 ),

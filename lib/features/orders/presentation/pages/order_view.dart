@@ -51,7 +51,7 @@ class OrderView extends ConsumerWidget {
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.pink[200],
                                         ),
-                                        child: const Text("Güncelle")),
+                                        child: const Text("Update")),
                                   ],
                                 ),
                               ),

@@ -27,5 +27,3 @@ class CustomerState with _$CustomerState {
       selectedShipper: null,
       selectedEmployee: null);
 }
-
-class Employeel {}

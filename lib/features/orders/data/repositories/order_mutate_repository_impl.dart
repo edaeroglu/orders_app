@@ -5,7 +5,6 @@ import '../../../../product/graphql_queries/queries.dart';
 import '../../domain/models/customer.dart';
 import '../../domain/models/employee.dart';
 import '../../domain/models/order_model.dart';
-import '../../domain/models/product_model/product_model.dart';
 import '../../domain/models/shipper.dart';
 import '../../domain/repositories/order_mutate_repository.dart';
 
@@ -75,16 +74,6 @@ class GeneralRepositoryImpl implements GeneralRepository {
   }
 
   @override
-  Future<List<ProductModel>> getProducts() async {
-    var response = await graphQLService.query(Queries.getProducts);
-    return response['products']
-        .map<ProductModel>(
-          (e) => ProductModel.fromJson(e),
-        )
-        .toList();
-  }
-
-  @override
   Future<List<Shipper>> getShippers() async {
     var response = await graphQLService.query(Queries.getShippers);
     return response['shippers']
@@ -93,6 +82,16 @@ class GeneralRepositoryImpl implements GeneralRepository {
         )
         .toList();
   }
+
+  // @override
+  // Future<List<ProductModel>> getProducts() async {
+  //   var response = await graphQLService.query(Queries.getProducts);
+  //   return response['products']
+  //       .map<ProductModel>(
+  //         (e) => ProductModel.fromJson(e),
+  //       )
+  //       .toList();
+  // }
 }
 
 

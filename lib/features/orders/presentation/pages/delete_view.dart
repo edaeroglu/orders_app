@@ -5,7 +5,7 @@ import 'package:deneme/product/components/buttons.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../product/routes/routes.dart';
+import '../../../../product/components/alert_dialog.dart';
 
 @RoutePage()
 class DeleteView extends ConsumerWidget {
@@ -20,7 +20,7 @@ class DeleteView extends ConsumerWidget {
                 data: (state) {
                   return Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 100),
+                      padding: const EdgeInsets.only(top: 220),
                       child: Column(children: [
                         DropdownButtonHideUnderline(
                           child: DropdownButton2(
@@ -64,11 +64,15 @@ class DeleteView extends ConsumerWidget {
                                 .read(orderProvider.notifier)
                                 .deleteOrder();
                             // ignore: use_build_context_synchronously
-                            context.router.push(
-                              const OrderRoute(),
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const SuccessAlertDialog(
+                                    text: "Deletion Successful");
+                              },
                             );
                           },
-                          text: "Sil",
+                          text: "Delete",
                         ),
                       ]),
                     ),

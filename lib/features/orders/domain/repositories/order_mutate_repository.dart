@@ -1,4 +1,3 @@
-import 'package:deneme/features/orders/domain/models/product_model/product_model.dart';
 import '../models/customer.dart';
 import '../models/employee.dart';
 import '../models/order_model.dart';
@@ -7,7 +6,7 @@ import '../models/shipper.dart';
 abstract class GeneralRepository {
   Future<List<Customer>> getCustomers();
   Future<List<Employee>> getEmployees();
-  Future<List<ProductModel>> getProducts();
+  // Future<List<ProductModel>> getProducts();
   Future<List<Shipper>> getShippers();
 
   Future<OrderModel> insertOrder({

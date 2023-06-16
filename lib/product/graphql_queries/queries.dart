@@ -40,8 +40,12 @@ class Queries {
   static const getCustomers = r'''
       query MyQuery {
         customers {
-          customerid
+          address
+          city
+          country
+          contactname
           customername
+          customerid
         }
       }
 ''';
@@ -49,18 +53,11 @@ class Queries {
   static const getEmployees = r'''
     query MyQuery {
       employees {
-        firstname
+        notes
         lastname
+        firstname
+        birthdate
         employeeid
-      }
-    }
-''';
-
-  static const getProducts = r'''
-    query MyQuery {
-      products {
-        productid
-        productname
       }
     }
 ''';
@@ -70,6 +67,16 @@ class Queries {
       shippers {
         shipperid
         shippername
+        phone
+      }
+    }
+''';
+
+  static const getProducts = r'''
+    query MyQuery {
+      products {
+        productid
+        productname
       }
     }
 ''';

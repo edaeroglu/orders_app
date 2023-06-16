@@ -4,7 +4,6 @@ import 'package:deneme/features/orders/domain/repositories/order_repository.dart
 import 'package:deneme/features/orders/presentation/states/order_state.dart';
 import 'package:deneme/product/injector/injector.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:injectable/injectable.dart';
 import '../../domain/models/order_model.dart';
 
 final bottomNavigationProvider = Provider<int>((ref) => 0);
@@ -82,12 +81,12 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
         orders: [...state.value!.orders].map((order) {
           if (order.orderid == newOrder.orderid) {
             return order.copyWith(
-              customerid: newOrder.customerid,
               customer: newOrder.customer,
               employee: newOrder.employee,
-              employeeid: newOrder.employeeid,
               shipper: newOrder.shipper,
-              shipperid: newOrder.shipperid,
+              // shipperid: newOrder.shipperid,
+              // customerid: newOrder.customerid,
+              // employeeid: newOrder.employeeid,
             );
           } else {
             return order;

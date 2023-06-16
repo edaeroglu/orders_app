@@ -11,7 +11,7 @@ class OrderWrapperView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AutoTabsRouter.tabBar(
-      routes: const [OrderRoute(), OptionsRoute()],
+      routes: const [OrderRoute(), DeleteRoute()],
       builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
@@ -31,9 +31,9 @@ class OrderWrapperView extends ConsumerWidget {
                 icon: Icon(
                   Icons.home,
                 ),
-                label: "home",
+                label: "orders",
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.menu), label: "settings")
+              BottomNavigationBarItem(icon: Icon(Icons.delete), label: "delete")
             ],
             currentIndex: tabsRouter.activeIndex,
             onTap: (index) {

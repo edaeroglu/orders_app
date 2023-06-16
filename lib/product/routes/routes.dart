@@ -17,12 +17,11 @@ class AppRouter extends _$AppRouter {
             page: OrderRoute.page,
             initial: true,
           ),
-          AutoRoute(page: OptionsRoute.page),
+          AutoRoute(page: DeleteRoute.page),
+          AutoRoute(
+            page: AddRoute.page,
+          ),
+          AutoRoute(page: UpdateRoute.page),
         ]),
-        AutoRoute(
-          page: AddRoute.page,
-        ),
-        AutoRoute(page: DeleteRoute.page),
-        AutoRoute(page: UpdateRoute.page),
       ];
 }

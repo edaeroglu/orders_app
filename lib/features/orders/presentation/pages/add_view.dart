@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:deneme/product/routes/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../../product/components/alert_dialog.dart';
 import '../../../../product/components/buttons.dart';
 import '../../domain/models/customer.dart';
 import '../../domain/models/employee.dart';
@@ -79,25 +79,23 @@ class AddView extends ConsumerWidget {
                         },
                         value: state.selectedShipper,
                       ),
-                      // DropdownMenu<ProductModel>(
-                      //   items: state.products,
-                      //   text: "Product Name",
-                      //   onChanged: (item) {
-                      //     provider.selectProduct(item ?? ProductModel());
-                      //   },
-                      //   value: state.selectedProduct,
-                      // ),
+
                       CrudButton(
-                          onPressed: () async {
-                            await ref
-                                .read(generalProvider.notifier)
-                                .insertOrder();
-                            // ignore: use_build_context_synchronously
-                            context.router.push(
-                              const OrderRoute(),
-                            );
-                          },
-                          text: "Ekle")
+                        onPressed: () async {
+                          await ref
+                              .read(generalProvider.notifier)
+                              .insertOrder();
+                          // ignore: use_build_context_synchronously
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const SuccessAlertDialog(
+                                  text: "Adding Succesful",
+                                );
+                              });
+                        },
+                        text: "Add",
+                      )
                     ],
                   ),
                 );
