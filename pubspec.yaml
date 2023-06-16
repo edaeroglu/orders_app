@@ -43,8 +43,9 @@ dependencies:
   get_it: ^7.6.0
   hooks_riverpod: ^2.3.6
   auto_route: ^7.4.0
-  flutter_screenutil: ^5.7.0
+
   dropdown_button2: ^2.1.3
+  flutter_screenutil: ^5.7.0
 
 
 dev_dependencies:

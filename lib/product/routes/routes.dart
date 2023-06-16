@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import '../../features/orders/presentation/pages/customer_view.dart';
 import '../../features/orders/presentation/pages/delete_view.dart';
 import '../../features/orders/presentation/pages/update_view.dart';
 import '../components/bottom_nav_bar.dart';

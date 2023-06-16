@@ -3,7 +3,9 @@ import 'package:deneme/features/orders/presentation/provider/order_provider.dart
 import 'package:deneme/product/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../product/components/buttons.dart';
+import '../components/buttons/customer_detail_button.dart';
+import '../components/buttons/employee_detail_button.dart';
+import '../components/buttons/shipper_detail_button.dart';
 
 @RoutePage()
 class OrderView extends ConsumerWidget {

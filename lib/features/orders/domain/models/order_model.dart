@@ -25,4 +25,8 @@ class OrderModel with _$OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);
+
+  String toString() {
+    return orderid.toString();
+  }
 }

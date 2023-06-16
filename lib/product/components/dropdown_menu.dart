@@ -1,9 +1,10 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DropdownMenu<T> extends ConsumerWidget {
-  const DropdownMenu({
+class DropdownListMenu<T> extends ConsumerWidget {
+  const DropdownListMenu({
     super.key,
     required this.onChanged,
     required this.items,
@@ -47,67 +48,10 @@ class DropdownMenu<T> extends ConsumerWidget {
             width: 140,
           ),
           menuItemStyleData: const MenuItemStyleData(
-            height: 40,
+            height: 45,
           ),
         ),
       ),
     );
   }
 }
-
-// class CrudDropdownMenu extends ConsumerWidget {
-//   CrudDropdownMenu({
-//     super.key,
-//     this.text,
-//   });
-
-//   final String? text;
-//   final List<String> items = ["Ekle", "Sil", "Güncelle"];
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     return Padding(
-//       padding: const EdgeInsets.only(bottom: 40),
-//       child: DropdownButtonHideUnderline(
-//         child: DropdownButton2(
-//           isExpanded: true,
-//           hint: Text(
-//             text ?? "",
-//             style: const TextStyle(
-//               fontSize: 14,
-//             ),
-//           ),
-//           items: items
-//               .map((item) => DropdownMenuItem<String>(
-//                     value: item,
-//                     child: Text(
-//                       item,
-//                       style: const TextStyle(
-//                         fontSize: 14,
-//                         color: Colors.black,
-//                       ),
-//                       overflow: TextOverflow.ellipsis,
-//                     ),
-//                   ))
-//               .toList(),
-//           onChanged: (value) {
-//             if (value == "Ekle") {
-//               context.pushRoute(const AddRoute());
-//             } else if (value == "Sil") {
-//               context.pushRoute(const DeleteRoute());
-//             } else if (value == "Güncelle") {
-//               context.pushRoute(const UpdateRoute());
-//             }
-//           },
-//           buttonStyleData: const ButtonStyleData(
-//             height: 40,
-//             width: 140,
-//           ),
-//           menuItemStyleData: const MenuItemStyleData(
-//             height: 40,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

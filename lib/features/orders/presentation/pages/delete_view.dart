@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/domain/models/order_model.dart';
 import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
-import 'package:deneme/product/components/buttons.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/alert_dialog.dart';
+import '../components/buttons/crud_button.dart';
+import '../../../../product/components/dropdown_menu.dart';
 
 @RoutePage()
 class DeleteView extends ConsumerWidget {
@@ -22,40 +22,15 @@ class DeleteView extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 220),
                       child: Column(children: [
-                        DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                            isExpanded: true,
-                            hint: Text(
-                              "Order Id",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).hintColor,
-                              ),
-                            ),
-                            value: state.selectedOrder,
-                            items: state.orders
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(
-                                      e.orderid.toString(),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            onChanged: (item) {
-                              provider.selectOrder(
-                                item ?? OrderModel(),
-                              );
-                            },
-                            menuItemStyleData: const MenuItemStyleData(
-                              height: 40,
-                            ),
-                            buttonStyleData: const ButtonStyleData(
-                              height: 40,
-                              width: 140,
-                            ),
-                          ),
+                        DropdownListMenu<OrderModel>(
+                          items: state.orders,
+                          text: "Order Id",
+                          onChanged: (item) {
+                            provider.selectOrder(
+                              item ?? OrderModel(),
+                            );
+                          },
+                          value: state.selectedOrder,
                         ),
                         const SizedBox(height: 40),
                         CrudButton(

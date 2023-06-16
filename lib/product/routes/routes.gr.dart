@@ -15,12 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    OptionsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OptionsView(),
-      );
-    },
     OrderRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -53,20 +47,6 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
-}
-
-/// generated route for
-/// [OptionsView]
-class OptionsRoute extends PageRouteInfo<void> {
-  const OptionsRoute({List<PageRouteInfo>? children})
-      : super(
-          OptionsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OptionsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
