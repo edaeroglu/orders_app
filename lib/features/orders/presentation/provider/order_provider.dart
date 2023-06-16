@@ -43,44 +43,6 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     log(state.value!.orders.toString());
   }
 
-  void addList(OrderModel order) {
-    state = AsyncData(
-      state.value!.copyWith(
-        orders: [...state.value!.orders]..insert(0, order),
-      ),
-    ); // hangi indexe ekleneceği
-  }
-
-  void removeList(int id) {
-    state = AsyncData(
-      state.value!.copyWith(
-        orders: [...state.value!.orders]
-          ..removeWhere((element) => element.orderid == id),
-      ),
-    ); // immutable olduğu için liste değişmedi. o yüzden bu şekilde kullanıldı.
-  }
-
-  void updateList(OrderModel newOrder) {
-    state = AsyncData(
-      state.value!.copyWith(
-        orders: [...state.value!.orders].map((order) {
-          if (order.orderid == newOrder.orderid) {
-            return order.copyWith(
-              customer: newOrder.customer,
-              employee: newOrder.employee,
-              shipper: newOrder.shipper,
-              // shipperid: newOrder.shipperid,
-              // customerid: newOrder.customerid,
-              // employeeid: newOrder.employeeid,
-            );
-          } else {
-            return order;
-          }
-        }).toList(),
-      ),
-    );
-  }
-
   Future<void> getOrders() async {
     // state = AsyncData(OrderState.initial()); //Bu şekilde yazınca state'i ezip veri geldiğini düşünerek loading göstermiyor.
     // return AsyncData(state.value!.copyWith(orders: await service.getOrders())).value;
@@ -116,6 +78,44 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     var a = await service.getEmployees();
     state = AsyncData(
       state.value!.copyWith(employees: a),
+    );
+  }
+
+  void addList(OrderModel order) {
+    state = AsyncData(
+      state.value!.copyWith(
+        orders: [...state.value!.orders]..insert(0, order),
+      ),
+    ); // hangi indexe ekleneceği
+  }
+
+  void removeList(int id) {
+    state = AsyncData(
+      state.value!.copyWith(
+        orders: [...state.value!.orders]
+          ..removeWhere((element) => element.orderid == id),
+      ),
+    ); // immutable olduğu için liste değişmedi. o yüzden bu şekilde kullanıldı.
+  }
+
+  void updateList(OrderModel newOrder) {
+    state = AsyncData(
+      state.value!.copyWith(
+        orders: [...state.value!.orders].map((order) {
+          if (order.orderid == newOrder.orderid) {
+            return order.copyWith(
+              customer: newOrder.customer,
+              employee: newOrder.employee,
+              shipper: newOrder.shipper,
+              // shipperid: newOrder.shipperid,
+              // customerid: newOrder.customerid,
+              // employeeid: newOrder.employeeid,
+            );
+          } else {
+            return order;
+          }
+        }).toList(),
+      ),
     );
   }
 
