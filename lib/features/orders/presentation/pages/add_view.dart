@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/alert_dialog.dart';
@@ -8,7 +7,7 @@ import '../../domain/models/customer.dart';
 import '../../domain/models/employee.dart';
 import '../../domain/models/shipper.dart';
 import '../components/buttons/crud_button.dart';
-import '../provider/order_mutate_provider.dart';
+import '../provider/order_provider.dart';
 
 @RoutePage()
 class AddView extends ConsumerWidget {
@@ -16,9 +15,9 @@ class AddView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.read<GeneralNotifier>(generalProvider.notifier);
+    final provider = ref.read<OrderNotifier>(orderProvider.notifier);
     return Scaffold(
-        body: ref.watch(generalProvider).when(
+        body: ref.watch(orderProvider).when(
               data: (state) {
                 return Center(
                   child: Column(
@@ -58,9 +57,7 @@ class AddView extends ConsumerWidget {
                       ),
                       CrudButton(
                         onPressed: () async {
-                          await ref
-                              .read(generalProvider.notifier)
-                              .insertOrder();
+                          await ref.read(orderProvider.notifier).insertOrder();
                           // ignore: use_build_context_synchronously
                           showDialog(
                               context: context,

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/domain/models/customer.dart';
-import 'package:deneme/features/orders/presentation/provider/order_mutate_provider.dart';
+import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../product/components/alert_dialog.dart';
@@ -16,9 +16,9 @@ class UpdateView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.read<GeneralNotifier>(generalProvider.notifier);
+    final provider = ref.read<OrderNotifier>(orderProvider.notifier);
     return Scaffold(
-      body: ref.watch(generalProvider).when(
+      body: ref.watch(orderProvider).when(
             data: (state) {
               return Center(
                 child: Column(
@@ -63,7 +63,7 @@ class UpdateView extends ConsumerWidget {
                     CrudButton(
                       onPressed: () async {
                         await ref
-                            .read(generalProvider.notifier)
+                            .read(orderProvider.notifier)
                             .updateOrder(id: orderId);
                         // ignore: use_build_context_synchronously
                         showDialog(
