@@ -6,6 +6,7 @@ import '../../../../core/graphql_client/graphql_client.dart';
 import '../../../../product/graphql_queries/mutations.dart';
 import '../../../../product/graphql_queries/queries.dart';
 import '../../domain/models/order_model.dart';
+import '../../domain/models/product/product.dart';
 import '../../domain/repositories/order_repository.dart';
 
 @Injectable(as: OrderRepository)
@@ -53,11 +54,20 @@ class OrderRepositoryImpl implements OrderRepository {
   }
 
   @override
+  Future<List<Product>> getProducts() async {
+    var response = await graphQLService.query(Queries.getProducts);
+    return response['products']
+        .map<Product>(
+          (e) => Product.fromJson(e),
+        )
+        .toList();
+  }
+
+  @override
   Future<OrderModel> insertOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
   }) async {
     var response = await graphQLService.mutate(
       Mutations.insertOrder,
@@ -65,7 +75,6 @@ class OrderRepositoryImpl implements OrderRepository {
         "customerid": customerId,
         "employeeid": employeeId,
         "shipperid": shipperId,
-        // "productid": productId,
       },
     );
     return OrderModel.fromJson(response['insert_orders_one']);
@@ -75,10 +84,12 @@ class OrderRepositoryImpl implements OrderRepository {
   Future<int> deleteOrder({
     required int orderId,
   }) async {
-    var response =
-        await graphQLService.mutate(Mutations.deleteOrder, variables: {
-      "order_id": orderId,
-    });
+    var response = await graphQLService.mutate(
+      Mutations.deleteOrder,
+      variables: {
+        "order_id": orderId,
+      },
+    );
 
     return response['delete_orders']['affected_rows'];
   }

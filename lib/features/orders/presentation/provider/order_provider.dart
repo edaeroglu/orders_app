@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../domain/models/customer.dart';
 import '../../domain/models/employee.dart';
 import '../../domain/models/order_model.dart';
-import '../../domain/models/product_model/product_model.dart';
+import '../../domain/models/product/product.dart';
 import '../../domain/models/shipper.dart';
 
 final bottomNavigationProvider = Provider<int>((ref) => 0);
@@ -37,7 +37,13 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     );
 
     Future.wait(
-      [getOrders(), getCustomers(), getShippers(), getEmployees()],
+      [
+        getOrders(),
+        getCustomers(),
+        getShippers(),
+        getEmployees(),
+        getProducts(),
+      ],
     );
 
     log(state.value!.orders.toString());
@@ -81,7 +87,14 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     );
   }
 
-  void addList(OrderModel order) {
+  Future<void> getProducts() async {
+    var a = await service.getProducts();
+    state = AsyncData(
+      state.value!.copyWith(products: a),
+    );
+  }
+
+  void addOrder(OrderModel order) {
     state = AsyncData(
       state.value!.copyWith(
         orders: [...state.value!.orders]..insert(0, order),
@@ -89,7 +102,7 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     ); // hangi indexe ekleneceği
   }
 
-  void removeList(int id) {
+  void removeOrder(int id) {
     state = AsyncData(
       state.value!.copyWith(
         orders: [...state.value!.orders]
@@ -98,7 +111,7 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     ); // immutable olduğu için liste değişmedi. o yüzden bu şekilde kullanıldı.
   }
 
-  void updateList(OrderModel newOrder) {
+  void updatedOrder(OrderModel newOrder) {
     state = AsyncData(
       state.value!.copyWith(
         orders: [...state.value!.orders].map((order) {
@@ -107,9 +120,9 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
               customer: newOrder.customer,
               employee: newOrder.employee,
               shipper: newOrder.shipper,
-              // shipperid: newOrder.shipperid,
-              // customerid: newOrder.customerid,
-              // employeeid: newOrder.employeeid,
+              shipperid: newOrder.shipperid,
+              customerid: newOrder.customerid,
+              employeeid: newOrder.employeeid,
             );
           } else {
             return order;
@@ -143,7 +156,7 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     );
   }
 
-  void selectProduct(ProductModel selectedProduct) {
+  void selectProduct(Product selectedProduct) {
     state = AsyncData(
       state.value!.copyWith(selectedProduct: selectedProduct),
     );
@@ -159,14 +172,15 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     log(response.toString());
 
     if (response.orderid != null) {
-      ref.read(orderProvider.notifier).addList(response);
+      ref.read(orderProvider.notifier).addOrder(response);
     }
 
     state = AsyncData(
       state.value!.copyWith(
-          selectedCustomer: null,
-          selectedEmployee: null,
-          selectedShipper: null),
+        selectedCustomer: null,
+        selectedEmployee: null,
+        selectedShipper: null,
+      ),
     );
 
     // await ref.read(orderProvider.notifier).getOrder();
@@ -182,7 +196,7 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     if (response != 0) {
       ref
           .read(orderProvider.notifier)
-          .removeList(state.value!.selectedOrder!.orderid!);
+          .removeOrder(state.value!.selectedOrder!.orderid!);
 
       state = AsyncData(
         state.value!.copyWith(
@@ -203,22 +217,25 @@ class OrderNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     log(response.toString());
 
     if (response.orderid != null) {
-      ref.read(orderProvider.notifier).updateList(OrderModel(
-            orderid: id,
-            customer: state.value!.selectedCustomer!,
-            employee: state.value!.selectedEmployee!,
-            shipper: state.value!.selectedShipper!,
-            // employeeid: state.value!.selectedEmployee!.employeeid!,
-            // shipperid: state.value!.selectedShipper!.shipperid!,
-            // customerid: state.value!.selectedCustomer!.customerid!,
-          ));
+      ref.read(orderProvider.notifier).updatedOrder(
+            OrderModel(
+              orderid: id,
+              customer: state.value!.selectedCustomer!,
+              employee: state.value!.selectedEmployee!,
+              shipper: state.value!.selectedShipper!,
+              employeeid: state.value!.selectedEmployee!.employeeid!,
+              shipperid: state.value!.selectedShipper!.shipperid!,
+              customerid: state.value!.selectedCustomer!.customerid!,
+            ),
+          );
     }
 
     state = AsyncData(
       state.value!.copyWith(
-          selectedCustomer: null,
-          selectedEmployee: null,
-          selectedShipper: null),
+        selectedCustomer: null,
+        selectedEmployee: null,
+        selectedShipper: null,
+      ),
     );
   }
 }

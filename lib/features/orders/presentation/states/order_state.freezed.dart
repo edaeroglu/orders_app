@@ -19,16 +19,14 @@ mixin _$OrderState {
   List<OrderModel> get orders => throw _privateConstructorUsedError;
   List<Customer> get customers => throw _privateConstructorUsedError;
   bool? get insertOrderResponse => throw _privateConstructorUsedError;
-  bool? get deleteOrderResponse => throw _privateConstructorUsedError;
-  bool? get updateOrderResponse => throw _privateConstructorUsedError;
   OrderModel? get selectedOrder => throw _privateConstructorUsedError;
   List<Shipper> get shippers => throw _privateConstructorUsedError;
   List<Employee> get employees => throw _privateConstructorUsedError;
-  List<ProductModel> get products => throw _privateConstructorUsedError;
+  List<Product> get products => throw _privateConstructorUsedError;
   Customer? get selectedCustomer => throw _privateConstructorUsedError;
   Shipper? get selectedShipper => throw _privateConstructorUsedError;
   Employee? get selectedEmployee => throw _privateConstructorUsedError;
-  ProductModel? get selectedProduct => throw _privateConstructorUsedError;
+  Product? get selectedProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderStateCopyWith<OrderState> get copyWith =>
@@ -45,22 +43,20 @@ abstract class $OrderStateCopyWith<$Res> {
       {List<OrderModel> orders,
       List<Customer> customers,
       bool? insertOrderResponse,
-      bool? deleteOrderResponse,
-      bool? updateOrderResponse,
       OrderModel? selectedOrder,
       List<Shipper> shippers,
       List<Employee> employees,
-      List<ProductModel> products,
+      List<Product> products,
       Customer? selectedCustomer,
       Shipper? selectedShipper,
       Employee? selectedEmployee,
-      ProductModel? selectedProduct});
+      Product? selectedProduct});
 
   $OrderModelCopyWith<$Res>? get selectedOrder;
   $CustomerCopyWith<$Res>? get selectedCustomer;
   $ShipperCopyWith<$Res>? get selectedShipper;
   $EmployeeCopyWith<$Res>? get selectedEmployee;
-  $ProductModelCopyWith<$Res>? get selectedProduct;
+  $ProductCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -79,8 +75,6 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
     Object? orders = null,
     Object? customers = null,
     Object? insertOrderResponse = freezed,
-    Object? deleteOrderResponse = freezed,
-    Object? updateOrderResponse = freezed,
     Object? selectedOrder = freezed,
     Object? shippers = null,
     Object? employees = null,
@@ -103,14 +97,6 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
           ? _value.insertOrderResponse
           : insertOrderResponse // ignore: cast_nullable_to_non_nullable
               as bool?,
-      deleteOrderResponse: freezed == deleteOrderResponse
-          ? _value.deleteOrderResponse
-          : deleteOrderResponse // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      updateOrderResponse: freezed == updateOrderResponse
-          ? _value.updateOrderResponse
-          : updateOrderResponse // ignore: cast_nullable_to_non_nullable
-              as bool?,
       selectedOrder: freezed == selectedOrder
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
@@ -126,7 +112,7 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
+              as List<Product>,
       selectedCustomer: freezed == selectedCustomer
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
@@ -142,7 +128,7 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
       selectedProduct: freezed == selectedProduct
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
-              as ProductModel?,
+              as Product?,
     ) as $Val);
   }
 
@@ -196,12 +182,12 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductModelCopyWith<$Res>? get selectedProduct {
+  $ProductCopyWith<$Res>? get selectedProduct {
     if (_value.selectedProduct == null) {
       return null;
     }
 
-    return $ProductModelCopyWith<$Res>(_value.selectedProduct!, (value) {
+    return $ProductCopyWith<$Res>(_value.selectedProduct!, (value) {
       return _then(_value.copyWith(selectedProduct: value) as $Val);
     });
   }
@@ -219,16 +205,14 @@ abstract class _$$_OrderStateCopyWith<$Res>
       {List<OrderModel> orders,
       List<Customer> customers,
       bool? insertOrderResponse,
-      bool? deleteOrderResponse,
-      bool? updateOrderResponse,
       OrderModel? selectedOrder,
       List<Shipper> shippers,
       List<Employee> employees,
-      List<ProductModel> products,
+      List<Product> products,
       Customer? selectedCustomer,
       Shipper? selectedShipper,
       Employee? selectedEmployee,
-      ProductModel? selectedProduct});
+      Product? selectedProduct});
 
   @override
   $OrderModelCopyWith<$Res>? get selectedOrder;
@@ -239,7 +223,7 @@ abstract class _$$_OrderStateCopyWith<$Res>
   @override
   $EmployeeCopyWith<$Res>? get selectedEmployee;
   @override
-  $ProductModelCopyWith<$Res>? get selectedProduct;
+  $ProductCopyWith<$Res>? get selectedProduct;
 }
 
 /// @nodoc
@@ -256,8 +240,6 @@ class __$$_OrderStateCopyWithImpl<$Res>
     Object? orders = null,
     Object? customers = null,
     Object? insertOrderResponse = freezed,
-    Object? deleteOrderResponse = freezed,
-    Object? updateOrderResponse = freezed,
     Object? selectedOrder = freezed,
     Object? shippers = null,
     Object? employees = null,
@@ -280,14 +262,6 @@ class __$$_OrderStateCopyWithImpl<$Res>
           ? _value.insertOrderResponse
           : insertOrderResponse // ignore: cast_nullable_to_non_nullable
               as bool?,
-      deleteOrderResponse: freezed == deleteOrderResponse
-          ? _value.deleteOrderResponse
-          : deleteOrderResponse // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      updateOrderResponse: freezed == updateOrderResponse
-          ? _value.updateOrderResponse
-          : updateOrderResponse // ignore: cast_nullable_to_non_nullable
-              as bool?,
       selectedOrder: freezed == selectedOrder
           ? _value.selectedOrder
           : selectedOrder // ignore: cast_nullable_to_non_nullable
@@ -303,7 +277,7 @@ class __$$_OrderStateCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
+              as List<Product>,
       selectedCustomer: freezed == selectedCustomer
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
@@ -319,7 +293,7 @@ class __$$_OrderStateCopyWithImpl<$Res>
       selectedProduct: freezed == selectedProduct
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
-              as ProductModel?,
+              as Product?,
     ));
   }
 }
@@ -331,12 +305,10 @@ class _$_OrderState implements _OrderState {
       {required final List<OrderModel> orders,
       required final List<Customer> customers,
       required this.insertOrderResponse,
-      required this.deleteOrderResponse,
-      required this.updateOrderResponse,
       required this.selectedOrder,
       required final List<Shipper> shippers,
       required final List<Employee> employees,
-      required final List<ProductModel> products,
+      required final List<Product> products,
       required this.selectedCustomer,
       required this.selectedShipper,
       required this.selectedEmployee,
@@ -366,10 +338,6 @@ class _$_OrderState implements _OrderState {
   @override
   final bool? insertOrderResponse;
   @override
-  final bool? deleteOrderResponse;
-  @override
-  final bool? updateOrderResponse;
-  @override
   final OrderModel? selectedOrder;
   final List<Shipper> _shippers;
   @override
@@ -387,9 +355,9 @@ class _$_OrderState implements _OrderState {
     return EqualUnmodifiableListView(_employees);
   }
 
-  final List<ProductModel> _products;
+  final List<Product> _products;
   @override
-  List<ProductModel> get products {
+  List<Product> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -402,11 +370,11 @@ class _$_OrderState implements _OrderState {
   @override
   final Employee? selectedEmployee;
   @override
-  final ProductModel? selectedProduct;
+  final Product? selectedProduct;
 
   @override
   String toString() {
-    return 'OrderState(orders: $orders, customers: $customers, insertOrderResponse: $insertOrderResponse, deleteOrderResponse: $deleteOrderResponse, updateOrderResponse: $updateOrderResponse, selectedOrder: $selectedOrder, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedProduct: $selectedProduct)';
+    return 'OrderState(orders: $orders, customers: $customers, insertOrderResponse: $insertOrderResponse, selectedOrder: $selectedOrder, shippers: $shippers, employees: $employees, products: $products, selectedCustomer: $selectedCustomer, selectedShipper: $selectedShipper, selectedEmployee: $selectedEmployee, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -419,10 +387,6 @@ class _$_OrderState implements _OrderState {
                 .equals(other._customers, _customers) &&
             (identical(other.insertOrderResponse, insertOrderResponse) ||
                 other.insertOrderResponse == insertOrderResponse) &&
-            (identical(other.deleteOrderResponse, deleteOrderResponse) ||
-                other.deleteOrderResponse == deleteOrderResponse) &&
-            (identical(other.updateOrderResponse, updateOrderResponse) ||
-                other.updateOrderResponse == updateOrderResponse) &&
             (identical(other.selectedOrder, selectedOrder) ||
                 other.selectedOrder == selectedOrder) &&
             const DeepCollectionEquality().equals(other._shippers, _shippers) &&
@@ -445,8 +409,6 @@ class _$_OrderState implements _OrderState {
       const DeepCollectionEquality().hash(_orders),
       const DeepCollectionEquality().hash(_customers),
       insertOrderResponse,
-      deleteOrderResponse,
-      updateOrderResponse,
       selectedOrder,
       const DeepCollectionEquality().hash(_shippers),
       const DeepCollectionEquality().hash(_employees),
@@ -468,16 +430,14 @@ abstract class _OrderState implements OrderState {
       {required final List<OrderModel> orders,
       required final List<Customer> customers,
       required final bool? insertOrderResponse,
-      required final bool? deleteOrderResponse,
-      required final bool? updateOrderResponse,
       required final OrderModel? selectedOrder,
       required final List<Shipper> shippers,
       required final List<Employee> employees,
-      required final List<ProductModel> products,
+      required final List<Product> products,
       required final Customer? selectedCustomer,
       required final Shipper? selectedShipper,
       required final Employee? selectedEmployee,
-      required final ProductModel? selectedProduct}) = _$_OrderState;
+      required final Product? selectedProduct}) = _$_OrderState;
 
   @override
   List<OrderModel> get orders;
@@ -486,17 +446,13 @@ abstract class _OrderState implements OrderState {
   @override
   bool? get insertOrderResponse;
   @override
-  bool? get deleteOrderResponse;
-  @override
-  bool? get updateOrderResponse;
-  @override
   OrderModel? get selectedOrder;
   @override
   List<Shipper> get shippers;
   @override
   List<Employee> get employees;
   @override
-  List<ProductModel> get products;
+  List<Product> get products;
   @override
   Customer? get selectedCustomer;
   @override
@@ -504,7 +460,7 @@ abstract class _OrderState implements OrderState {
   @override
   Employee? get selectedEmployee;
   @override
-  ProductModel? get selectedProduct;
+  Product? get selectedProduct;
   @override
   @JsonKey(ignore: true)
   _$$_OrderStateCopyWith<_$_OrderState> get copyWith =>

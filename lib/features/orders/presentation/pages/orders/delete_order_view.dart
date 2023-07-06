@@ -2,20 +2,30 @@ import 'package:auto_route/auto_route.dart';
 import 'package:deneme/features/orders/domain/models/order_model.dart';
 import 'package:deneme/features/orders/presentation/provider/order_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../product/components/alert_dialog.dart';
-import '../components/buttons/crud_button.dart';
-import '../../../../product/components/dropdown_menu.dart';
+import '../../../../../product/components/alert_dialog.dart';
+import '../../../../../product/routes/routes.dart';
+import '../../components/buttons/crud_button.dart';
+import '../../../../../product/components/dropdown_menu.dart';
 
 @RoutePage()
-class DeleteView extends ConsumerWidget {
-  const DeleteView({super.key});
+class DeleteOrderView extends ConsumerWidget {
+  const DeleteOrderView({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = ref.read<OrderNotifier>(orderProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios),
+                onPressed: () {
+                  context.router.pop();
+                },
+              ),
+              backgroundColor: Colors.red[200]),
           body: ref.watch(orderProvider).when(
                 data: (state) {
                   return Center(
@@ -32,7 +42,7 @@ class DeleteView extends ConsumerWidget {
                           },
                           value: state.selectedOrder,
                         ),
-                        const SizedBox(height: 40),
+                        SizedBox(height: 40.h),
                         CrudButton(
                           onPressed: () async {
                             await ref
@@ -42,8 +52,12 @@ class DeleteView extends ConsumerWidget {
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return const SuccessAlertDialog(
-                                    text: "Deletion Successful");
+                                return SuccessAlertDialog(
+                                  text: "Deletion Successful",
+                                  onPressed: () {
+                                    context.router.push(const OrderRoute());
+                                  },
+                                );
                               },
                             );
                           },

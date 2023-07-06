@@ -1,6 +1,7 @@
 import '../models/customer.dart';
 import '../models/employee.dart';
 import '../models/order_model.dart';
+import '../models/product/product.dart';
 import '../models/shipper.dart';
 
 abstract class OrderRepository {
@@ -8,12 +9,12 @@ abstract class OrderRepository {
   Future<List<Shipper>> getShippers();
   Future<List<Customer>> getCustomers();
   Future<List<Employee>> getEmployees();
+  Future<List<Product>> getProducts();
 
   Future<OrderModel> insertOrder({
     required int customerId,
     required int employeeId,
     required int shipperId,
-    // required int productId,
   });
 
   Future<int> deleteOrder({

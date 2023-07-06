@@ -3,9 +3,10 @@ import 'package:deneme/features/orders/presentation/provider/order_provider.dart
 import 'package:deneme/product/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../components/buttons/customer_detail_button.dart';
-import '../components/buttons/employee_detail_button.dart';
-import '../components/buttons/shipper_detail_button.dart';
+
+import '../../components/buttons/customer_detail_button.dart';
+import '../../components/buttons/employee_detail_button.dart';
+import '../../components/buttons/shipper_detail_button.dart';
 
 @RoutePage()
 class OrderView extends ConsumerWidget {
@@ -15,6 +16,14 @@ class OrderView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                context.router.pop();
+              },
+            ),
+            backgroundColor: Colors.red[200]),
         body: ref.watch(orderProvider).when(
               data: (state) {
                 return ListView.builder(
@@ -22,7 +31,11 @@ class OrderView extends ConsumerWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        // final customerName = clickedCustomer.customername;
+                        // context.router.push(
+                        //   UpdateOrderRoute(
+                        //     orderId: state.orders[index].orderid ?? 0,
+                        //   ),
+                        // );
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -45,10 +58,13 @@ class OrderView extends ConsumerWidget {
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                         onPressed: () {
-                                          context.router.push(UpdateRoute(
+                                          context.router.push(
+                                            UpdateOrderRoute(
                                               orderId:
                                                   state.orders[index].orderid ??
-                                                      0));
+                                                      0,
+                                            ),
+                                          );
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.pink[200],

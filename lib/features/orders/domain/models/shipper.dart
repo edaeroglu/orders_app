@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'shipper.freezed.dart';
 part 'shipper.g.dart';
 
-@Freezed(toStringOverride: false)
+@Freezed(toStringOverride: false, equal: true)
 class Shipper with _$Shipper {
   Shipper._();
   factory Shipper({
@@ -20,4 +20,18 @@ class Shipper with _$Shipper {
   }
 
   int get id => shipperid ?? 0;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Shipper &&
+        other.phone == phone &&
+        other.shipperid == shipperid &&
+        other.shippername == shippername;
+  }
+
+  @override
+  int get hashCode {
+    return phone.hashCode ^ shipperid.hashCode ^ shippername.hashCode;
+  }
 }
