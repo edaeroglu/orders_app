@@ -4,7 +4,7 @@ part 'employee.freezed.dart';
 part 'employee.g.dart';
 
 @Freezed(toStringOverride: false)
-class Employee extends Equatable with _$Employee {
+class Employee with _$Employee {
   const Employee._();
   const factory Employee({
     String? notes,
