@@ -29,8 +29,8 @@ class HomeView extends ConsumerWidget {
                       onTapUpdate: () {
                         context.router.push(const OrderRoute());
                       }),
-                  const SizedBox(
-                    width: 20,
+                  SizedBox(
+                    width: 20.w,
                   ),
                   DropdownButtonCategories(
                     text: "Shippers",
@@ -46,8 +46,8 @@ class HomeView extends ConsumerWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               Row(
                 children: [

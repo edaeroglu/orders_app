@@ -34,6 +34,8 @@ class ShipperNotifier extends AutoDisposeAsyncNotifier<OrderState> {
     state = AsyncData(
       state.value!.copyWith(shippers: a.toSet().toList()),
     );
+
+    print(a.toSet().length);
   }
 
   void addShipper(Shipper shipper) {

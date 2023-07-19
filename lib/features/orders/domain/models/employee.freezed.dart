@@ -149,7 +149,7 @@ class __$$_EmployeeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Employee extends _Employee {
-  _$_Employee(
+  const _$_Employee(
       {this.notes,
       this.lastname,
       this.firstname,
@@ -207,13 +207,13 @@ class _$_Employee extends _Employee {
 }
 
 abstract class _Employee extends Employee {
-  factory _Employee(
+  const factory _Employee(
       {final String? notes,
       final String? lastname,
       final String? firstname,
       final String? birthdate,
       final int? employeeid}) = _$_Employee;
-  _Employee._() : super._();
+  const _Employee._() : super._();
 
   factory _Employee.fromJson(Map<String, dynamic> json) = _$_Employee.fromJson;
 

@@ -50,9 +50,7 @@ class UpdateOrderView extends ConsumerWidget {
                           },
                           value: state.selectedCustomer,
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        SizedBox(height: 20.h),
                         DropdownListMenu<Employee>(
                           items: state.employees,
                           text: "Employee Name",

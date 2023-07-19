@@ -115,7 +115,7 @@ class __$$_ShipperCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Shipper extends _Shipper {
-  _$_Shipper({this.phone, this.shipperid, this.shippername}) : super._();
+  const _$_Shipper({this.phone, this.shipperid, this.shippername}) : super._();
 
   factory _$_Shipper.fromJson(Map<String, dynamic> json) =>
       _$$_ShipperFromJson(json);
@@ -126,22 +126,6 @@ class _$_Shipper extends _Shipper {
   final int? shipperid;
   @override
   final String? shippername;
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Shipper &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.shipperid, shipperid) ||
-                other.shipperid == shipperid) &&
-            (identical(other.shippername, shippername) ||
-                other.shippername == shippername));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, phone, shipperid, shippername);
 
   @JsonKey(ignore: true)
   @override
@@ -158,11 +142,11 @@ class _$_Shipper extends _Shipper {
 }
 
 abstract class _Shipper extends Shipper {
-  factory _Shipper(
+  const factory _Shipper(
       {final String? phone,
       final int? shipperid,
       final String? shippername}) = _$_Shipper;
-  _Shipper._() : super._();
+  const _Shipper._() : super._();
 
   factory _Shipper.fromJson(Map<String, dynamic> json) = _$_Shipper.fromJson;
 

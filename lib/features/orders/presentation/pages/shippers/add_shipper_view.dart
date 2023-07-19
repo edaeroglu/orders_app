@@ -48,8 +48,6 @@ class AddShipperView extends ConsumerWidget {
                           inputFormatters: [
                             MaskTextInputFormatter(
                               mask: '(###) ###-####',
-                              // filter: {"#": RegExp(r'[0-9]')},
-                              // type: MaskAutoCompletionType.lazy)
                             )
                           ],
                         ),

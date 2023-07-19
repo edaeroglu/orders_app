@@ -36,24 +36,27 @@ class AppRouter extends _$AppRouter {
         //     AutoRoute(page: DeleteOrderRoute.page),
         //   ],
         // ),
+
+        AutoRoute(page: HomeRoute.page, initial: true),
+
         AutoRoute(page: OrderRoute.page),
+        AutoRoute(page: AddOrderRoute.page),
         AutoRoute(page: DeleteOrderRoute.page),
-        AutoRoute(
-          page: AddOrderRoute.page,
-        ),
+        AutoRoute(page: UpdateOrderRoute.page),
+
+        AutoRoute(page: EmployeeRoute.page),
+        AutoRoute(page: AddEmployeeRoute.page),
+        AutoRoute(page: DeleteEmployeeRoute.page),
+        AutoRoute(page: UpdateEmployeeRoute.page),
+
+        AutoRoute(page: ShipperRoute.page),
         AutoRoute(page: AddShipperRoute.page),
         AutoRoute(page: DeleteShipperRoute.page),
         AutoRoute(page: UpdateShipperRoute.page),
-        AutoRoute(page: UpdateOrderRoute.page),
-        AutoRoute(page: AddEmployeeRoute.page),
-        AutoRoute(page: UpdateEmployeeRoute.page),
-        AutoRoute(page: EmployeeRoute.page),
-        AutoRoute(page: DeleteEmployeeRoute.page),
-        AutoRoute(page: ShipperRoute.page),
+
         AutoRoute(page: ProductRoute.page),
         AutoRoute(page: AddProductRoute.page),
         AutoRoute(page: DeleteProductRoute.page),
         AutoRoute(page: UpdateProductRoute.page),
-        AutoRoute(page: HomeRoute.page, initial: true),
       ];
 }
